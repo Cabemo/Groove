@@ -5,10 +5,10 @@ class SistemaParticulas {
     sp = new Ball[size][numParticulas];
   }
   void colorear() {
-    int R = (int)random(256), 
-        G = (int)random(256), 
-        B = (int)random(256);
     for(int i = 0; i < sp.length; i++) {
+      int R = (int)random(255);
+      int G = (int)random(255);
+      int B = (int)random(255);
       for(int j = 0; j < sp[0].length; j++) {
         sp[i][j] = new Ball(color(R, G, B));
       }
@@ -24,21 +24,23 @@ class SistemaParticulas {
   void centroG(boolean azar, int main) {
     int x = width/(sp.length + 2);
     int y = height/8;
-    
+    int contador = 1;
      for(int i = 0; i < sp.length; i++) {
        for(Ball b : sp[i]) {
          if(main > 0) {
-            b.centroG(mouseX, mouseY, true);
-            main --;
+            b.centroG(mouseX, mouseY, false);
          }
          else {
-           if(azar) b.centroG(random(x) * sp.length + x, random(y) * 6 + y, false);
+           if(azar) b.centroG(random(x) * sp.length + x, random(y) * 6 + y, true);
            else {
-             int contador = 2;
-             b.centroG(x * contador, y * 4, false);
+             b.centroG(x * contador, y * 4, true);
            }
          }
-       } 
+        b.move();
+        b.display();
+       }
+       contador++;
+       main--;
      }
   }
 }

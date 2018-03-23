@@ -4,7 +4,6 @@ class Ball {
   PVector acceleration;
   float mass;
   color c;
-  PVector centro;
  Ball(color c) {
    location = new PVector(random(width/3) + width/3,random(height/3) + height/3);
    velocity = new PVector(0,0);
@@ -38,7 +37,7 @@ class Ball {
  }
  void centroG(float x, float y, boolean m) {
    //Declare forces
-     centro = new PVector(x, y);
+    PVector centro = new PVector(x, y);
     //PVector friction = b.velocity.copy();
     gravity = new PVector(0,t);
     gravity.mult(mass);
@@ -48,11 +47,9 @@ class Ball {
       if(keyCode == 'E') centro.setMag(.2);
       else if(keyCode == 'C') centro.setMag(.9*mass);
       else if(m) centro.setMag(.9*mass);
-      else if(keyCode == 'G') {
-        location.x = mouseX;
-        location.y = mouseY;
-      }
+      else if(keyCode == 'G') location.x = mouseX;
       else if(!m) centro.setMag(.9);
+      
       addForce(centro);
     }
     else {
