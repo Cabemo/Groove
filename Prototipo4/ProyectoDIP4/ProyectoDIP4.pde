@@ -1,56 +1,68 @@
 Ball[][] all;
 PVector gravity;
 float t = .4;// modifica el vector y de la gravedad
-int margenDerecho; //describe el limite a la derecha
-int margenIzquierdo; // describe el limite a la izquierda
-int margenTop; //margen superior
+float margenDerecho; //describe el limite a la derecha
+float margenIzquierdo; // describe el limite a la izquierda
+float margenTop; //margen superior
+float[] randX;
+float[] randY;
+color[] colores = {#16a085, //verde
+						 #d35400, //naranja
+						 #c0392b, //rojo
+						 #2980b9, //azul
+						 #f1c40f, //amarillo
+						 #8e44ad, //morado
+						 #487eb0 //azul gris
+						};
 
 void settings() 
 {
 	size(720,360);
 	//fullScreen();
 	//frameRate(2);
-	margenDerecho = (width-width/10);
-	margenIzquierdo = (width/10);
-	margenTop = (height/10);
+	margenDerecho = floor((width-width/10));
+	margenIzquierdo = floor((width/10));
+	margenTop = floor((height/10));
 }
+
 
 void setup()
 {
-	all = new Ball[6][500];
+	//........[nball][particles/ball]
+	all = new Ball[12][250]; //menos part mas rapido mueve
+	randX = new float[all.length];
+	randY = new float[all.length];
+	
 	for(int i = 0; i < all.length; i++)
 	{
+		int index = floor(random(0, colores.length-1));
 		for(int j = 0; j < all[0].length; j++)
 		{
 			switch(i)
 			{
 				case 0:
 					all[i][j] = new Ball(#E4E5E5); // blanco grisoso
-					break;
-				case 1:
-					all[i][j] = new Ball(#e67e22); //naranja leve
-					break;
-				case 2:
-					all[i][j] = new Ball(#f1c40f); //amarillo
-					break;
-				case 3:
-					all[i][j] = new Ball(#c0392b); //rojo
-					break;
-				case 4:
-					all[i][j] = new Ball(#27ae60); //verde
-					break;
-				case 5:
-					all[i][j] = new Ball(#8e44ad); //morado
-					break;
+				break;
+				default:
+					all[i][j] = new Ball(colores[index]);
+				break;
 			}
 		}
 	}
+
+	for(int i = 0; i < randX.length; i++)
+	{
+		randX[i] = random(margenIzquierdo,margenDerecho);
+		randY[i] = random(margenTop,height/1.5);
+	}
+
 }
 
 void draw()
 {
 	background(0);
 	
+
 	for(int i = 0; i < all.length; i++)
 	{
 		for(Ball b : all[i])
@@ -60,21 +72,9 @@ void draw()
 				case 0:
 					b.centroG(mouseX, mouseY, false);
 					break;
-				case 1:
-					b.centroG(width/8 * 2, height/3, true);
-					break;
-				case 2:
-					b.centroG(width/8 * 3, height/3, true);
-					break;
-				case 3:
-					b.centroG(width/8 * 4, height/3, true);
-					break;
-				case 4:
-					b.centroG(width/8 * 5, height/3, true);
-					break;
-				case 5:
-					b.centroG(width/8 * 6, height/3, true);
-					break;       
+				default :
+					b.centroG(randX[i], randY[i], true);
+					break;     
 			}
 			b.move();
 			b.display();
