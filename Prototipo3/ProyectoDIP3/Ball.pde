@@ -2,6 +2,7 @@ class Ball {
   PVector location;
   PVector velocity;
   PVector acceleration;
+  PVector gravity;
   float mass;
   color c;
   PVector centro;
@@ -40,7 +41,7 @@ class Ball {
    //Declare forces
      centro = new PVector(x, y);
     //PVector friction = b.velocity.copy();
-    gravity = new PVector(0,t);
+    gravity = new PVector(0,.2);
     gravity.mult(mass);
     //Let's add gravity and friction
     if((mouseX < width && mouseX > 0) && (mouseY < height && mouseY > 0)) {

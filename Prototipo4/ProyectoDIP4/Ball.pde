@@ -32,8 +32,8 @@ class Ball
 
 	void bounce()
 	{
-		if((location.x > width - mass) || (location.x < mass)) velocity.x *= -1; //cambia sentido 
-		if((location.y > height - mass) || (location.y < mass)) velocity.y *= -1; //cambia sentido 
+		if((location.x > width - mass) || (location.x < mass)) velocity.x *= -abs(velocity.x); //cambia sentido 
+		if((location.y > height - mass) || (location.y < mass)) velocity.y *= -abs(velocity.y); //cambia sentido 
 	}
 
 	void addForce(PVector force)

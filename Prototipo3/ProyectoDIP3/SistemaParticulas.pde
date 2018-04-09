@@ -25,19 +25,20 @@ class SistemaParticulas {
     int x = width/(sp.length + 2);
     int y = height/8;
     int contador = 1;
+    
      for(int i = 0; i < sp.length; i++) {
        for(Ball b : sp[i]) {
          if(main > 0) {
             b.centroG(mouseX, mouseY, false);
          }
          else {
-           if(azar) b.centroG(random(x) * sp.length + x, random(y) * 6 + y, true);
+           if(azar) b.centroG(x, y, true);
            else {
              b.centroG(x * contador, y * 4, true);
            }
          }
-        b.move();
-        b.display();
+         b.move();
+         b.display();
        }
        contador++;
        main--;
