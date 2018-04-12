@@ -60,12 +60,17 @@ class SistemaParticulas
 
 	void generarPosiciones()
 	{
+		float inc = TWO_PI/25.0, a = 0.0;
 		for(int i = 0; i < posiciones.length; i++)
 		{
 			for(int j = 0; j < 2; j++)
 			{
-				if(j == 0) posiciones[i][j] = (int)random(width);
-				else if(j == 1) posiciones[i][j] = (int)random(height);
+				if(j == 0)
+				{
+					posiciones[i][j] = sin(a)+(i*width/15);
+					a += inc;
+				}
+				else if(j == 1) posiciones[i][j] = random(height/3) + height/3;
 			}
 		}
 	}
@@ -86,7 +91,7 @@ class SistemaParticulas
 					}
 					else
 					{
-						if(azar) b.centroG(posiciones[i][0], posiciones[i][0], true);
+						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
 						else
 						{
 							b.centroG(x * contador, y * 4, true);
