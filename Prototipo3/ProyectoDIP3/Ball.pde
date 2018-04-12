@@ -45,7 +45,8 @@ class Ball
 	{
 		stroke(0);
 		strokeWeight(0);
-		fill(c,100);
+		//fill(c,100);
+		fill(c);
 		ellipse(location.x,location.y,mass,mass);
 	}
 

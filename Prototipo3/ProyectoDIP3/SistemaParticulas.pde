@@ -58,7 +58,7 @@ class SistemaParticulas
 		}
 	}
 
-	void generarPosiciones()
+	void generarPosiciones(int size)
 	{
 		float inc = TWO_PI/25.0, a = 0.0,value=0.0;
 		for(int i = 0; i < posiciones.length; i++)
@@ -67,11 +67,12 @@ class SistemaParticulas
 			{
 				if(j == 0)
 				{
-					value = (i*width/15);
-					posiciones[i][j] = sin(a)+map(value, 0,width,margenIzquierdo,margenDerecho);
+					value = sin(a)+(i*width/size);
+					posiciones[i][j] = map(value, 0,width,margenIzquierdo,margenDerecho);
 					a += inc;
+					inc = TWO_PI/random(1,100);
 				}
-				else if(j == 1) posiciones[i][j] = random(height/3) + height/3;
+				else if(j == 1) posiciones[i][j] = random(height*2/3)+margenTop;
 			}
 		}
 	}
