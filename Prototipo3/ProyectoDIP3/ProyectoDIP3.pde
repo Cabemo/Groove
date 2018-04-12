@@ -1,7 +1,6 @@
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
-float margenTop; //margen superi
 int clusters = 16;
 
 void settings()
@@ -10,7 +9,6 @@ void settings()
 	//fullScreen();
 	margenDerecho = floor((width-width/10));
 	margenIzquierdo = floor((width/10));
-	margenTop = floor((height/10));
  	p1 = new SistemaParticulas(clusters);
 }
 
