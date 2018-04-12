@@ -1,3 +1,4 @@
+import ddf.minim.*;
 class Ball
 {
 	PVector location;
@@ -6,6 +7,9 @@ class Ball
 	float mass; //tamaño
 	color c;
 	PVector centro;
+  Minim minim;
+  AudioPlayer player;
+  String[] audio = {"bass.mp3","guitar.mp3","beat.mp3","bass.mp3"};
 
 	Ball(color c)
 	{
@@ -14,6 +18,9 @@ class Ball
 		acceleration = new PVector(0,0); // inician en 0
 		mass = random(1,5); // tamaño y masa entre 1 y 5;
 		this.c = c;
+    minim = new Minim(this);
+    player = minim.loadFile(audio[(int)random(audio.length)]);
+    
 	}
 
 	void move()
