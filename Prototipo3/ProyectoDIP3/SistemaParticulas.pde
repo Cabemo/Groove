@@ -72,7 +72,7 @@ class SistemaParticulas
 					a += inc;
 					inc = TWO_PI/random(1,100);
 				}
-				else if(j == 1) posiciones[i][j] = random(height*2/3)+size*2;
+				else if(j == 1) posiciones[i][j] = random(height*2/3)+floor((height/20));
 			}
 		}
 	}
