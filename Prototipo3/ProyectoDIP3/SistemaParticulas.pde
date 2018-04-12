@@ -44,7 +44,9 @@ class SistemaParticulas {
   void generarPosiciones() {
     for(int i = 0; i < posiciones.length; i++) {
       for(int j = 0; j < 2; j++) {
+        //posición en "X"
         if(j == 0) posiciones[i][j] = (int)random(width);
+        //posición en "Y"
         else if(j == 1) posiciones[i][j] = (int)random(height);
       }
     }
