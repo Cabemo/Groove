@@ -44,9 +44,7 @@ class SistemaParticulas {
   void generarPosiciones() {
     for(int i = 0; i < posiciones.length; i++) {
       for(int j = 0; j < 2; j++) {
-        //posición en "X"
         if(j == 0) posiciones[i][j] = (int)random(width);
-        //posición en "Y"
         else if(j == 1) posiciones[i][j] = (int)random(height);
       }
     }
@@ -62,7 +60,7 @@ class SistemaParticulas {
             b.centroG(mouseX, mouseY, false);
          }
          else {
-           if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
+           if(azar) b.centroG(posiciones[i][0], posiciones[i]Ñ, true);
            else {
              b.centroG(x * contador, y * 4, true);
            }
