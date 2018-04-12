@@ -5,6 +5,7 @@ void settings() {
 }
 void setup() {
   p1.colorear();
+  p1.generarPosiciones();
 }
 void draw() {
   background(0);

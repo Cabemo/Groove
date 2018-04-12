@@ -1,6 +1,6 @@
 class SistemaParticulas {
   Ball[][] sp;
-  int posicionX, posicionY;
+  int[][] posiciones;
   color[]colores = {#16a085, //verde
              #e67e22, //naranja
              #c0392b, //rojo
@@ -16,6 +16,7 @@ class SistemaParticulas {
   SistemaParticulas(int size) {
     int numParticulas = 4000/size;
     sp = new Ball[size][numParticulas];
+    posiciones = new int[size][2];
   }
   void move() {
     for(int i = 0; i < sp.length; i++) {
@@ -40,6 +41,14 @@ class SistemaParticulas {
       }
     }
   }
+  void generarPosiciones() {
+    for(int i = 0; i < posiciones.length; i++) {
+      for(int j = 0; j < 2; j++) {
+        if(j == 0) posiciones[i][j] = (int)random(width);
+        else if(j == 1) posiciones[i][j] = (int)random(height);
+      }
+    }
+  }
   void centroG(boolean azar, int main) {
     int x = width/(sp.length + 2);
     int y = height/8;
@@ -51,7 +60,7 @@ class SistemaParticulas {
             b.centroG(mouseX, mouseY, false);
          }
          else {
-           if(azar) b.centroG(random(width), y*random(4), true);
+           if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
            else {
              b.centroG(x * contador, y * 4, true);
            }
