@@ -60,14 +60,15 @@ class SistemaParticulas
 
 	void generarPosiciones()
 	{
-		float inc = TWO_PI/25.0, a = 0.0;
+		float inc = TWO_PI/25.0, a = 0.0,value=0.0;
 		for(int i = 0; i < posiciones.length; i++)
 		{
 			for(int j = 0; j < 2; j++)
 			{
 				if(j == 0)
 				{
-					posiciones[i][j] = sin(a)+(i*width/15);
+					value = (i*width/15);
+					posiciones[i][j] = sin(a)+map(value, 0,width,margenIzquierdo,margenDerecho);
 					a += inc;
 				}
 				else if(j == 1) posiciones[i][j] = random(height/3) + height/3;
