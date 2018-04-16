@@ -1,5 +1,4 @@
-class SistemaParticulas
-{
+class SistemaParticulas {
 	Ball[][] sp;
 	float[][] posiciones;
 	color[]colores = {#16a085, //verde
@@ -16,15 +15,13 @@ class SistemaParticulas
 	                  #f53b57 //rosa fuerte
 	                 };
 
-	SistemaParticulas(int size)
-	{
+	SistemaParticulas(int size) {
 		int numParticulas = 4000/size;
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
 	}
 	
-	void move()
-	{
+	void move() {
 		for(int i = 0; i < sp.length; i++)
 		{
 			for(Ball b: sp[i])
@@ -35,38 +32,28 @@ class SistemaParticulas
 		}
 	}
 
-	void colorear()
-	{
-		for(int i = 0; i < sp.length; i++)
-		{
+	void colorear() {
+		for(int i = 0; i < sp.length; i++) {
 			color c = colores[(int)random(colores.length)];
-			for(int j = 0; j < sp[0].length; j++)
-			{
+			for(int j = 0; j < sp[0].length; j++) {
 				sp[i][j] = new Ball(c);
 			}
 		}
 	}
 
-	void colorear(color c)
-	{
-		for(int i = 0; i < sp.length; i++)
-		{
-			for(int j = 0; j < sp[0].length; j++)
-			{
+	void colorear(color c) {
+		for(int i = 0; i < sp.length; i++) {
+			for(int j = 0; j < sp[0].length; j++) {
 				sp[i][j] = new Ball(c);
 			}
 		}
 	}
 
-	void generarPosiciones(int size)
-	{
-		float inc = TWO_PI/25.0, a = 0.0,value=0.0;
-		for(int i = 0; i < posiciones.length; i++)
-		{
-			for(int j = 0; j < 2; j++)
-			{
-				if(j == 0)
-				{
+	void generarPosiciones(int size) {
+		float inc = TWO_PI/25.0, a = 0.0, value = 0.0;
+		for(int i = 0; i < posiciones.length; i++) {
+			for(int j = 0; j < 2; j++) {
+				if(j == 0) {
 					value = sin(a)+(i*width/size);
 					posiciones[i][j] = map(value, 0,width,margenIzquierdo,margenDerecho);
 					a += inc;
@@ -77,25 +64,19 @@ class SistemaParticulas
 		}
 	}
 
-	void centroG(boolean azar, int main)
-	{
+	void centroG(boolean azar, int main) {
 		int x = width/(sp.length + 2);
 		int y = height/8;
 		int contador = 1;
 		
-		 for(int i = 0; i < sp.length; i++)
-		 {
-			for(Ball b : sp[i])
-			{
-					if(main > 0)
-					{
+		 for(int i = 0; i < sp.length; i++) {
+			for(Ball b : sp[i]) {
+					if(main > 0) {
 						b.centroG(mouseX, mouseY, false);
 					}
-					else
-					{
+					else {
 						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
-						else
-						{
+						else {
 							b.centroG(x * contador, y * 4, true);
 						}
 					}
