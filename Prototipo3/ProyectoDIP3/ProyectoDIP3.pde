@@ -1,3 +1,5 @@
+HelpMenu h;
+
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
@@ -10,17 +12,22 @@ void settings()
 	margenDerecho = floor((width-width/10));
 	margenIzquierdo = floor((width/10));
  	p1 = new SistemaParticulas(clusters);
+
+
+ 	h = new HelpMenu();
 }
 
 void setup()
 {
  	p1.colorear();
  	p1.generarPosiciones(clusters);
+
 }
 
 void draw()
 {
  	background(0);
- 	p1.centroG(true, 1);
- 	p1.move();
+ 	//p1.centroG(true, 1);
+ 	//p1.move();
+ 	h.display();
 }
