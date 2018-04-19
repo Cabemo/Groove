@@ -1,4 +1,7 @@
+import gifAnimation.*;
 HelpMenu h;
+PFont mono;
+Gif gif;
 
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
@@ -19,9 +22,13 @@ void settings()
 
 void setup()
 {
- 	p1.colorear();
- 	p1.generarPosiciones(clusters);
-
+	p1.colorear();
+	p1.generarPosiciones(clusters);
+	//
+	mono = createFont("Sanotra.ttf",32);
+	textFont(mono);
+	gif = new Gif(this, "helpImages/1.gif");
+	gif.play();
 }
 
 void draw()
@@ -30,4 +37,6 @@ void draw()
  	//p1.centroG(true, 1);
  	//p1.move();
  	h.display();
+ 	h.backbtn();
+ 	image(gif, 10, 100);
 }

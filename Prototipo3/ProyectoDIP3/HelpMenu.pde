@@ -1,8 +1,12 @@
+
+//https://github.com/01010101/GifAnimation
+
 class HelpMenu
 {
 	PVector position;
 	float currentVolume;
 	float size;
+	
 
 	HelpMenu()
 	{
@@ -11,6 +15,8 @@ class HelpMenu
 		// volumen inicial de 0 a 100
 		size = width/8; //100%
 		currentVolume = size*.8; //80%
+		
+  
 	}
 
 	void display()
@@ -30,6 +36,17 @@ class HelpMenu
 		currentVolume = map(mouseX, 0, width, 0, size);
 
 		//constrain(currentVolume, 0, size);
+	}
+
+	void backbtn()
+	{
+		textSize(width/15);
+		text("BACK", 10, width/15);
+	}
+
+	void gifs()
+	{
+		
 	}
 
 	float getVolume()
