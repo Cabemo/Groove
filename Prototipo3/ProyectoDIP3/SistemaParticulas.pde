@@ -1,3 +1,8 @@
+import org.openkinect.freenect.*;
+import org.openkinect.freenect2.*;
+import org.openkinect.processing.*;
+import org.openkinect.tests.*;
+
 class SistemaParticulas {
 	Ball[][] sp;
 	float[][] posiciones;
@@ -14,11 +19,13 @@ class SistemaParticulas {
 	                  #4bcffa, //azul claro
 	                  #f53b57 //rosa fuerte
 	                 };
-
-	SistemaParticulas(int size) {
-		int numParticulas = 4000/size;
+  Kinect kinect;
+  
+	SistemaParticulas(int size, Kinect kinect) {
+		int numParticulas = 2000/size;
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
+    this.kinect = kinect;
 	}
 	
 	void move() {
@@ -64,7 +71,7 @@ class SistemaParticulas {
 		}
 	}
 
-	void centroG(boolean azar, int main) {
+	void centroG(boolean azar, int main, float mainX, float mainY) {
 		int x = width/(sp.length + 2);
 		int y = height/8;
 		int contador = 1;
@@ -72,7 +79,7 @@ class SistemaParticulas {
 		 for(int i = 0; i < sp.length; i++) {
 			for(Ball b : sp[i]) {
 					if(main > 0) {
-						b.centroG(mouseX, mouseY, false);
+						b.centroG(mainX, mainY, false);
 					}
 					else {
 						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
