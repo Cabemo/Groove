@@ -1,25 +1,27 @@
-
-//https://github.com/01010101/GifAnimation
-
 class HelpMenu
 {
 	PVector position;
 	float currentVolume;
 	float size;
+	Gif[] gifs;
 	
-
-	HelpMenu()
+	HelpMenu(Gif[] gifs)
 	{
 		// position
 		position = new PVector(width/2, height/2);
 		// volumen inicial de 0 a 100
 		size = width/8; //100%
 		currentVolume = size*.8; //80%
-		
-  
+
+		this.gifs = gifs;
+		for(int i = 0; i < gifs.length; i++)
+		{
+			this.gifs[i].play();
+		}
+
 	}
 
-	void display()
+	void volumen()
 	{
 		//position
 		stroke(255);
@@ -41,12 +43,15 @@ class HelpMenu
 	void backbtn()
 	{
 		textSize(width/15);
-		text("BACK", 10, width/15);
+		text("GROOVE", 10, width/15);
 	}
 
 	void gifs()
 	{
-		
+		for(int i = 0; i < gifs.length; i++)
+		{
+			image(gifs[i], 0, 100);
+		}
 	}
 
 	float getVolume()

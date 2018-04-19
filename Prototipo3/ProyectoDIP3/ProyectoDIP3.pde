@@ -1,7 +1,9 @@
+//https://github.com/01010101/GifAnimation
 import gifAnimation.*;
+
 HelpMenu h;
 PFont mono;
-Gif gif;
+Gif[] gifs = new Gif[4];
 
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
@@ -16,8 +18,11 @@ void settings()
 	margenIzquierdo = floor((width/10));
  	p1 = new SistemaParticulas(clusters);
 
-
- 	h = new HelpMenu();
+ 	for(int i = 0; i < gifs.length; i++)
+ 	{
+ 		gifs[i] = new Gif(this, "helpImages/"+(i+1)+".gif");
+ 	}
+ 	h = new HelpMenu(gifs);
 }
 
 void setup()
@@ -27,8 +32,7 @@ void setup()
 	//
 	mono = createFont("Sanotra.ttf",32);
 	textFont(mono);
-	gif = new Gif(this, "helpImages/1.gif");
-	gif.play();
+	
 }
 
 void draw()
@@ -36,7 +40,7 @@ void draw()
  	background(0);
  	//p1.centroG(true, 1);
  	//p1.move();
- 	h.display();
+ 	h.volumen();
  	h.backbtn();
- 	image(gif, 10, 100);
+ 	h.gifs();
 }
