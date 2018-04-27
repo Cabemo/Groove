@@ -13,7 +13,7 @@ class Ball
 		location = new PVector(random(width/3) + width/3,random(height/3) + height/3);
 		velocity = new PVector(0,0);
 		acceleration = new PVector(0,0);
-		mass = random(1,5);
+		mass = random(1,10);
 		this.c = c;
 	}
 

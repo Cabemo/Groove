@@ -22,7 +22,7 @@ class SistemaParticulas {
   Kinect kinect;
   
 	SistemaParticulas(int size, Kinect kinect) {
-		int numParticulas = 2000/size;
+		int numParticulas = 500/size;
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
     this.kinect = kinect;
@@ -40,8 +40,10 @@ class SistemaParticulas {
 	}
 
 	void colorear() {
+    color c;
 		for(int i = 0; i < sp.length; i++) {
-			color c = colores[(int)random(colores.length)];
+      if(i == 0) c = #FFFFFF;
+			else c = colores[(int)random(colores.length)];
 			for(int j = 0; j < sp[0].length; j++) {
 				sp[i][j] = new Ball(c);
 			}
