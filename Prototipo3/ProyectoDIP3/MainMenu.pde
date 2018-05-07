@@ -1,18 +1,29 @@
 //git push origin MainMenu
-import processing.video.*;
 import ddf.minim.*;
+import org.openkinect.freenect.*;
+import org.openkinect.freenect2.*;
+import org.openkinect.processing.*;
+import org.openkinect.tests.*;
 
+SistemaParticulas p1;
+float margenDerecho; //describe el limite a la derecha
+float margenIzquierdo; // describe el limite a la izquierda
+int paquete;
+int clusters = 16;
+PImage img;
+boolean centered;
+Kinect kinect;
+KinectTracker tracker;
 Minim minim;
 AudioPlayer song;
 AudioInput input;
-Movie movie;
 PImage startScreen;
 
 //inicializando botones
 int startX, startY;
 int helpX, helpY;
-int startSize = 90;
-int helpSize = 90;
+int atrasX, atrasY;
+int atrasSize = 90, startSize = 90, helpSize = 90;
 int stage;
 
 //Font para el texto
@@ -23,21 +34,40 @@ boolean startOver = false;
 boolean helpOver = false;
 boolean clickedStart = false;
 boolean clickedHelp = false;
+boolean clickedAtras = false;
 
-color startColor, helpColor;
-color startHighlight, helpHighlight;
+color startColor, helpColor, atrasColor;
+color startHighlight, helpHighlight, atrasHighlight;
+
+void settings()
+{  
+  
+   size(displayWidth, displayHeight);//necesario para kinect no cambiar!
+  //fullScreen();
+  margenDerecho = floor((width-width/10));
+  margenIzquierdo = floor((width/10));
+  kinect = new Kinect(this);
+  tracker = new KinectTracker();
+   p1 = new SistemaParticulas(clusters, kinect);
+ centered = false;
+}
 
 void setup(){
-  size(displayWidth, displayHeight);
+    p1.colorear();
+   p1.generarPosiciones(clusters);
   //Botones
   startX = displayWidth/2-(startSize);
   startY = displayHeight/2-displayHeight/10;
   helpX = displayWidth/2-(startSize);
   helpY = displayHeight/2+displayHeight/8;
+  atrasX = displayWidth-3*atrasSize;
+  atrasY = displayHeight/13;
   startColor = color(0);
   helpColor = color(0);
+  atrasColor = color(0);
   startHighlight = color(100);
   helpHighlight = color(100);
+  atrasHighlight = color(100);
 
     //Musica
     minim = new Minim(this);
@@ -48,18 +78,14 @@ void setup(){
   startScreen = loadImage("Start.jpg");
   image(startScreen, 0, 0, displayWidth, displayHeight);
   baron = createFont("Baron Neue.ttf", 32, true);
-  manbow = createFont("manbow tone.ttf", 110, true);
+  //manbow = createFont("manbow tone.ttf", 110, true);
 
 }
 
 void draw(){
-  stroke(0);
-  fill(startColor);
-  rect(startX, startY, startSize+90, startSize-10, 15);
-  fill(helpColor);
-  rect(helpX, helpY, helpSize+90, helpSize-10, 15);
 
   update(mouseX, mouseY);
+  mouseClick();
   if (startOver && !helpOver) {
     startColor = startHighlight;
     helpColor = color(0);
@@ -74,8 +100,13 @@ void draw(){
   song.pause();
   }
     if (stage == 1){
+      stroke(0);
+  fill(startColor);
+  rect(startX, startY, startSize+90, startSize-10, 15);
+  fill(helpColor);
+  rect(helpX, helpY, helpSize+90, helpSize-10, 15);
     textAlign(CENTER);
-    textFont(manbow);
+    textFont(baron);
     fill(255);
     text("GR   OVE", displayWidth/2, displayHeight/4);
     textFont(baron);
@@ -85,17 +116,41 @@ void draw(){
     text("HELP", displayWidth/2, displayHeight*0.685);
 }else if (stage == 2) {
   //Instanciar la pagina de help
-    }else{
-  //Instanciar la pagina de juego
+    }else if (stage == 3) {
+    //Juego
+    if(overAtras()) {
+      atrasColor = atrasHighlight;
+    }
+    else atrasColor = color(0);
+    song.pause();
+    mouseClick();
+    centerWindow();
+    tracker.display();
+    fill(255);
+    rect(atrasX, atrasY, atrasSize+90, atrasSize-10, 15);
+    tracker.track();
+    PVector t = tracker.getPos();
+     p1.centroG(true, 1, t.x, t.y);
+     p1.move();
     }
 }
-
+void dispose() {
+  kinect.stopDepth();
+}
+void centerWindow()
+{
+  if(frame != null && centered == false)
+  {
+    frame.setLocation(displayWidth/2-width/2,displayHeight/2-height/3);
+    centered = true;
+  }
+}
 void update(int x, int y){
-  if (overStart(startX, startY, startSize+90, startSize-10)) {
+  if (overStart()) {
   song.play();
   startOver = true;
   helpOver = false;
-}else if (overHelp(helpX, helpY, helpSize+90, helpSize-10)) {
+}else if (overHelp()) {
   startOver = false;
   helpOver = true;
   }else{
@@ -103,26 +158,39 @@ void update(int x, int y){
   }
 }
 
-boolean overStart(int x, int y, int width, int height){
-  if (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height) {
+boolean overStart(){
+  if (mouseX >= startX && mouseX <= startX+startSize+90 && mouseY >= startY && mouseY <= startY+startSize-10) {
   return true;
   }else return false;
 }
 
-boolean overHelp(int x, int y, int width, int height){
-  if (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height) {
+boolean overHelp(){
+  if (mouseX >= helpX && mouseX <= helpX+helpSize+90 && mouseY >= helpY && mouseY <= helpY+helpSize-10) {
+  return true;
+  }else return false;
+}
+boolean overAtras(){
+  if (mouseX >= atrasX && mouseX <= atrasX+atrasSize+90 && mouseY >= atrasY && mouseY <= atrasY+atrasSize-10) {
   return true;
   }else return false;
 }
 
-void mouseClicked(){
-  if (clickedStart){
+void mouseClick(){
+  if (overStart() && mousePressed){
     clickedStart = true;
     clickedHelp = false;
+    clickedAtras = false;
     stage = 3;
-  }else if(clickedHelp){
+  }else if(overHelp() && mousePressed){
     clickedHelp = true;
     clickedStart = false;
+    clickedAtras = false;
     stage = 2;
   }
+  else if(overAtras() && mousePressed) {
+    clickedAtras = true;
+    clickedHelp = false;
+    clickedStart = false;
+    stage = 1;
+}
 }
