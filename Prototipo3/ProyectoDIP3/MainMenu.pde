@@ -4,7 +4,14 @@ import org.openkinect.freenect.*;
 import org.openkinect.freenect2.*;
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
+import gifAnimation.*;
 
+//Menu de help
+HelpMenu h;
+PFont mono;
+Gif[] gifs = new Gif[4];
+
+//Sistema de particulas y Kinect
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
@@ -41,7 +48,11 @@ color startHighlight, helpHighlight, atrasHighlight;
 
 void settings()
 {  
-  
+    for(int i = 0; i < gifs.length; i++)
+   {
+     gifs[i] = new Gif(this, "helpImages/"+(i+1)+".gif");
+   }
+   h = new HelpMenu(gifs);
    size(displayWidth, displayHeight);//necesario para kinect no cambiar!
   //fullScreen();
   margenDerecho = floor((width-width/10));
@@ -115,7 +126,9 @@ void draw(){
     text("START", displayWidth/2, displayHeight*(0.46));
     text("HELP", displayWidth/2, displayHeight*0.685);
 }else if (stage == 2) {
-  //Instanciar la pagina de help
+      h.volumen();
+   h.backbtn();
+   h.gifs();
     }else if (stage == 3) {
     //Juego
     if(overAtras()) {
