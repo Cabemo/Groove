@@ -61,8 +61,9 @@ class Ball
 		if((mouseX < margenDerecho && mouseX > margenIzquierdo)) //&& (mouseY > margenTop))
 		{
 			centro = centro.sub(location);
-			if(keyCode == 'E') centro.setMag(.2);
-			else if(keyCode == 'C') centro.setMag(.9*mass);
+			
+			if(keyCode == 'E') centro.setMag(.2); //expande 
+			else if(keyCode == 'C') centro.setMag(.9*mass); // contrae
 			else if(m) centro.setMag(.9*mass);
 			else if(keyCode == 'G')
 			{
@@ -71,6 +72,7 @@ class Ball
 			}
 			else if(!m) centro.setMag(.9);
 			addForce(centro);
+			
 		}
 		else
 		{

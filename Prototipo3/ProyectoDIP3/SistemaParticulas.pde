@@ -1,3 +1,4 @@
+import ddf.minim.*;
 class SistemaParticulas {
 	Ball[][] sp;
 	float[][] posiciones;
@@ -14,9 +15,9 @@ class SistemaParticulas {
 	                  #4bcffa, //azul claro
 	                  #f53b57 //rosa fuerte
 	                 };
-
+	
 	SistemaParticulas(int size) {
-		int numParticulas = 4000/size;
+		int numParticulas = 2000/size;
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
 	}
