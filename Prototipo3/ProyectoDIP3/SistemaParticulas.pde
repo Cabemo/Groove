@@ -72,7 +72,6 @@ class SistemaParticulas {
 			}
 		}
 	}
-
 	void centroG(boolean azar, int main, float mainX, float mainY) {
 		int x = width/(sp.length + 2);
 		int y = height/8;

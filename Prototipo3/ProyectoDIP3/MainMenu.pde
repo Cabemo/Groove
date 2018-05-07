@@ -73,9 +73,9 @@ void setup(){
   helpY = displayHeight/2+displayHeight/8;
   atrasX = displayWidth-3*atrasSize;
   atrasY = displayHeight/13;
-  startColor = color(0);
-  helpColor = color(0);
-  atrasColor = color(0);
+  startColor = color(255);
+  helpColor = color(255);
+  atrasColor = color(255);
   startHighlight = color(100);
   helpHighlight = color(100);
   atrasHighlight = color(100);
@@ -86,28 +86,26 @@ void setup(){
 
   //cual stage es el que activara
   stage = 1;
-  startScreen = loadImage("Start.jpg");
+  startScreen = loadImage("data/start.png");
   image(startScreen, 0, 0, displayWidth, displayHeight);
   baron = createFont("Baron Neue.ttf", 32, true);
-  //manbow = createFont("manbow tone.ttf", 110, true);
+  manbow = createFont("manbow tone.ttf", 110, true);
 
 }
 
 void draw(){
-
   update(mouseX, mouseY);
   mouseClick();
   if (startOver && !helpOver) {
     startColor = startHighlight;
-    helpColor = color(0);
   }else if (helpOver && !startOver) {
     helpColor = helpHighlight;
-    startColor = color(0);
+    startColor = color(255);
     song.pause();
   }else{
 
-  helpColor = color(0);
-  startColor = color(0);
+  helpColor = color(255);
+  startColor = color(255);
   song.pause();
   }
     if (stage == 1){
@@ -117,15 +115,17 @@ void draw(){
   fill(helpColor);
   rect(helpX, helpY, helpSize+90, helpSize-10, 15);
     textAlign(CENTER);
-    textFont(baron);
+    textFont(manbow);
+    textSize(150);
     fill(255);
     text("GR   OVE", displayWidth/2, displayHeight/4);
     textFont(baron);
     textSize(25);
-    fill(255,0,0);
-    text("START", displayWidth/2, displayHeight*(0.46));
-    text("HELP", displayWidth/2, displayHeight*0.685);
+    fill(0);
+    text("START", displayWidth/2, startY+((startSize)/2)+2);
+    text("HELP", displayWidth/2, helpY+(startSize)/2+2);
 }else if (stage == 2) {
+  background(0);
       h.volumen();
    h.backbtn();
    h.gifs();
@@ -159,7 +159,7 @@ void centerWindow()
   }
 }
 void update(int x, int y){
-  if (overStart()) {
+  if (overStart() && stage == 1) {
   song.play();
   startOver = true;
   helpOver = false;

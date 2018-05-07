@@ -8,9 +8,9 @@ class HelpMenu
 	HelpMenu(Gif[] gifs)
 	{
 		// position
-		position = new PVector(width/2, height/2);
+		position = new PVector(displayWidth/2, displayHeight/2);
 		// volumen inicial de 0 a 100
-		size = width/8; //100%
+		size = displayWidth/8; //100%
 		currentVolume = size*.8; //80%
 
 		this.gifs = gifs;
@@ -35,15 +35,16 @@ class HelpMenu
 		ellipse(position.x, position.y, currentVolume, currentVolume);
 
 		//
-		currentVolume = map(mouseX, 0, width, 0, size);
+    System.out.println(displayWidth);
+		currentVolume = map(mouseX, 0, displayWidth, 0, size);
 
 		//constrain(currentVolume, 0, size);
 	}
 
 	void backbtn()
 	{
-		textSize(width/15);
-		text("GROOVE", 10, width/15);
+		textSize(displayWidth/15);
+		text("GROOVE", 10, displayWidth/15);
 	}
 
 	void gifs()

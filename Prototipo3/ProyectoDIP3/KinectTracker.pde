@@ -18,7 +18,8 @@ int[] depth;
 PImage[] backgrounds = {
   loadImage("data/parque.png"), 
   loadImage("data/ciudad.png"), 
-  loadImage("data/espacio.png")};
+  loadImage("data/espacio.png"),
+  loadImage("data/granja.png")};
 PImage display, background;
 float count;
 float widthRelation, heightRelation;
@@ -31,7 +32,8 @@ KinectTracker() {
   lerpedLoc = new PVector(0,0);
   //DISEÑO
   paquete = (int)random(4);
-  background = backgrounds[(int)random(3)];
+  
+  background = backgrounds[paquete];
   background.resize(width, height);
   display = createImage(width, height, RGB);
   widthRelation = width/640;
