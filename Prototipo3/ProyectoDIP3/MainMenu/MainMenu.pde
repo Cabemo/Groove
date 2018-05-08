@@ -1,5 +1,6 @@
 //git push origin MainMenu
 import ddf.minim.*;
+import ddf.minim.analysis.*;
 import org.openkinect.freenect.*;
 import org.openkinect.freenect2.*;
 import org.openkinect.processing.*;
@@ -26,7 +27,12 @@ PImage img;
 boolean centered;
 Kinect kinect;
 KinectTracker tracker;
+
+//MUSICA
 Minim minim;
+AudioPlayer[] players;
+BeatDetect beat;
+float[] fuerzas;
 AudioPlayer song;
 AudioInput input;
 PImage startScreen;
@@ -61,14 +67,19 @@ void setup(){
 tiempo = 0;
 paquete = (int)random(3);
 p1.colorear();
- p1.generarPosiciones(clusters);
- o.colorear(255);
+p1.generarPosiciones(clusters);
+o.colorear(255);
 
-
-//Musica
+//MUSICA
 minim = new Minim(this);
 song = minim.loadFile("Soulful.mp3");
-
+players = new AudioPlayer[clusters - 1];
+fuerzas = new float[clusters];
+fuerzas[fuerzas.length - 1] = 0.9;
+for(int i = 0; i < players.length; i++) {
+  fuerzas[i] = 0.9;
+  players[i] = minim.loadFile(rutaPaquetes[i], 2048);
+}
 //cual stage es el que activara
 stage = 1;
 startScreen = loadImage("data/start.png");
