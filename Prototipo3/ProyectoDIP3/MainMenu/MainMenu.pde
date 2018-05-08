@@ -21,7 +21,7 @@ SistemaParticulas p1, o;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
 int paquete;
-int clusters = 19;
+int clusters = 20;
 PImage img;
 boolean centered;
 Kinect kinect;

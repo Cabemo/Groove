@@ -9,7 +9,7 @@ class SistemaParticulas {
   float[] tiempo;
 	float[][] posiciones;
 	RutasPaquetes rutas;
-	color[]colores = new color[19];
+	color[] colores = new color[clusters];
   Kinect kinect;
   
 	SistemaParticulas(int size, Kinect kinect) {
