@@ -26,7 +26,7 @@ class RutasPaquetes
 		#F3D34A, #F2E600, #FCCA46, #FCE14B, #FFD300};
 	color[] parqueBass = {
 		#C179B9, #A42CD6, #502274, #420039, #330036};
-	
+
 	//colores galaxia
 	color[] galaxiaPiano1 = {
 		#FFD25A, #FFF05A, #FFE548, #E9B44C, #FFB20F};
@@ -65,193 +65,193 @@ class RutasPaquetes
 
 	String[] paq0195 =
 	{
-		"data/paquete01_95/Bass-1.wav",
-		"data/paquete01_95/Bass-2.wav",
-		"data/paquete01_95/Beat-1.wav",
-		"data/paquete01_95/Beat-2.wav",
-		"data/paquete01_95/Beat-3.wav",
-		"data/paquete01_95/Beat-4.wav",
-		"data/paquete01_95/Beat-5.wav",
-		"data/paquete01_95/Beat-6.wav",
-		"data/paquete01_95/Beat-7.wav",
-		"data/paquete01_95/Beat-8.wav",
-		"data/paquete01_95/Beat-9.wav",
-		"data/paquete01_95/Guitar-1.wav",
-		"data/paquete01_95/Guitar-2.wav",
-		"data/paquete01_95/Organ-1.wav",
-		"data/paquete01_95/Organ-2.wav",
-		"data/paquete01_95/Piano-1.wav",
-		"data/paquete01_95/Piano-2.wav",
-		"data/paquete01_95/Piano-3.wav",
-		"data/paquete01_95/Piano-4.wav",
+		"data/paquetes/Bass-1.mp3",
+		"data/paquetes/Bass-2.mp3",
+		"data/paquetes/Beat-1.mp3",
+		"data/paquetes/Beat-2.mp3",
+		"data/paquetes/Beat-3.mp3",
+		"data/paquetes/Beat-4.mp3",
+		"data/paquetes/Beat-5.mp3",
+		"data/paquetes/Beat-6.mp3",
+		"data/paquetes/Beat-7.mp3",
+		"data/paquetes/Beat-8.mp3",
+		"data/paquetes/Beat-9.mp3",
+		"data/paquetes/Guitar-1.mp3",
+		"data/paquetes/Guitar-2.mp3",
+		"data/paquetes/Organ-1.mp3",
+		"data/paquetes/Organ-2.mp3",
+		"data/paquetes/Piano-1.mp3",
+		"data/paquetes/Piano-2.mp3",
+		"data/paquetes/Piano-3.mp3",
+		"data/paquetes/Piano-4.mp3",
 	};
 
 	String[] paq01110 =
 	{
-		"data/paquete01_110/Bass-110D-01.wav",
-		"data/paquete01_110/Beat1.wav",
-		"data/paquete01_110/Beat-9.wav",
-		"data/paquete01_110/BeatC110-06.wav",
-		"data/paquete01_110/EPiano110G-01.wav",
-		"data/paquete01_110/Organ-01.wav",
-		"data/paquete01_110/Piano-02.wav",
-		"data/paquete01_110/Bass-110G-01.wav",
-		"data/paquete01_110/Beat-6.wav",
-		"data/paquete01_110/Beat9.wav",
-		"data/paquete01_110/BeatC110-09.wav",
-		"data/paquete01_110/Guitar110D-01.wav",
-		"data/paquete01_110/Organ-02.wav",
-		"data/paquete01_110/Beat-1.wav",
-		"data/paquete01_110/Beat6.wav",
-		"data/paquete01_110/BeatC110-01.wav",
-		"data/paquete01_110/EPiano110D-01.wav",
-		"data/paquete01_110/Guitar110G-01.wav",
-		"data/paquete01_110/Piano-01.wav"
+		"data/paquetes/Bass-110D-01.mp3",
+		"data/paquetes/Beat1.mp3",
+		"data/paquetes/Beat-9.mp3",
+		"data/paquetes/BeatC110-06.mp3",
+		"data/paquetes/EPiano110G-01.mp3",
+		"data/paquetes/Organ-01.mp3",
+		"data/paquetes/Piano-02.mp3",
+		"data/paquetes/Bass-110G-01.mp3",
+		"data/paquetes/Beat-6.mp3",
+		"data/paquetes/Beat9.mp3",
+		"data/paquetes/BeatC110-09.mp3",
+		"data/paquetes/Guitar110D-01.mp3",
+		"data/paquetes/Organ-02.mp3",
+		"data/paquetes/Beat-1.mp3",
+		"data/paquetes/Beat6.mp3",
+		"data/paquetes/BeatC110-01.mp3",
+		"data/paquetes/EPiano110D-01.mp3",
+		"data/paquetes/Guitar110G-01.mp3",
+		"data/paquetes/Piano-01.mp3"
 	};
 
-	String[] paq01120 = 
+	String[] paq01120 =
 	{
-		"data/paquete01_120/JC_Bass-120A-01.wav",
-		"data/paquete01_120/JC_Bass-120G-01.wav",
-		"data/paquete01_120/JC_BeatA120-01.wav",
-		"data/paquete01_120/JC_BeatA120-03.wav",
-		"data/paquete01_120/JC_BeatA120-05.wav",
-		"data/paquete01_120/JC_BeatB120-01.wav",
-		"data/paquete01_120/JC_BeatB120-03.wav",
-		"data/paquete01_120/JC_BeatB120-05.wav",
-		"data/paquete01_120/JC_BeatC120-01.wav",
-		"data/paquete01_120/JC_BeatC120-03.wav",
-		"data/paquete01_120/JC_BeatC120-05.wav",
-		"data/paquete01_120/JC_EPiano120D-01.wav",
-		"data/paquete01_120/JC_EPiano120G-01.wav",
-		"data/paquete01_120/JC_Guitar120A-01.wav",
-		"data/paquete01_120/JC_Guitar120D-02.wav",
-		"data/paquete01_120/JC_Organ-120D-01.wav",
-		"data/paquete01_120/JC_Organ-120G-01.wav",
-		"data/paquete01_120/JC_Piano-120D-01.wav",
-		"data/paquete01_120/JC_Piano-120G-01.wav"
+		"data/paquetes/JC_Bass-120A-01.mp3",
+		"data/paquetes/JC_Bass-120G-01.mp3",
+		"data/paquetes/JC_BeatA120-01.mp3",
+		"data/paquetes/JC_BeatA120-03.mp3",
+		"data/paquetes/JC_BeatA120-05.mp3",
+		"data/paquetes/JC_BeatB120-01.mp3",
+		"data/paquetes/JC_BeatB120-03.mp3",
+		"data/paquetes/JC_BeatB120-05.mp3",
+		"data/paquetes/JC_BeatC120-01.mp3",
+		"data/paquetes/JC_BeatC120-03.mp3",
+		"data/paquetes/JC_BeatC120-05.mp3",
+		"data/paquetes/JC_EPiano120D-01.mp3",
+		"data/paquetes/JC_EPiano120G-01.mp3",
+		"data/paquetes/JC_Guitar120A-01.mp3",
+		"data/paquetes/JC_Guitar120D-02.mp3",
+		"data/paquetes/JC_Organ-120D-01.mp3",
+		"data/paquetes/JC_Organ-120G-01.mp3",
+		"data/paquetes/JC_Piano-120D-01.mp3",
+		"data/paquetes/JC_Piano-120G-01.mp3"
 	};
 
 	String[] paq0295 =
 	{
-		"data/paquete02_95/JC_Bass95A-02.wav",
-		"data/paquete02_95/JC_Bass95C-02.wav",
-		"data/paquete02_95/JC_BeatA95-02.wav",
-		"data/paquete02_95/JC_BeatA95-04.wav",
-		"data/paquete02_95/JC_BeatA95-06.wav",
-		"data/paquete02_95/JC_BeatB95-02.wav",
-		"data/paquete02_95/JC_BeatB95-04.wav",
-		"data/paquete02_95/JC_BeatB95-06.wav",
-		"data/paquete02_95/JC_BeatC95-02.wav",
-		"data/paquete02_95/JC_BeatC95-04.wav",
-		"data/paquete02_95/JC_BeatC95-06.wav",
-		"data/paquete02_95/JC_EPiano95A-02.wav",
-		"data/paquete02_95/JC_EPiano95C-02.wav",
-		"data/paquete02_95/JC_Guitar95A-02.wav",
-		"data/paquete02_95/JC_Guitar95C-02.wav",
-		"data/paquete02_95/JC_Organ95A-02.wav",
-		"data/paquete02_95/JC_Organ95C-02.wav",
-		"data/paquete02_95/JC_Piano95A-02.wav",
-		"data/paquete02_95/JC_Piano95C-02.wav"
+		"data/paquetes/JC_Bass95A-02.mp3",
+		"data/paquetes/JC_Bass95C-02.mp3",
+		"data/paquetes/JC_BeatA95-02.mp3",
+		"data/paquetes/JC_BeatA95-04.mp3",
+		"data/paquetes/JC_BeatA95-06.mp3",
+		"data/paquetes/JC_BeatB95-02.mp3",
+		"data/paquetes/JC_BeatB95-04.mp3",
+		"data/paquetes/JC_BeatB95-06.mp3",
+		"data/paquetes/JC_BeatC95-02.mp3",
+		"data/paquetes/JC_BeatC95-04.mp3",
+		"data/paquetes/JC_BeatC95-06.mp3",
+		"data/paquetes/JC_EPiano95A-02.mp3",
+		"data/paquetes/JC_EPiano95C-02.mp3",
+		"data/paquetes/JC_Guitar95A-02.mp3",
+		"data/paquetes/JC_Guitar95C-02.mp3",
+		"data/paquetes/JC_Organ95A-02.mp3",
+		"data/paquetes/JC_Organ95C-02.mp3",
+		"data/paquetes/JC_Piano95A-02.mp3",
+		"data/paquetes/JC_Piano95C-02.mp3"
 	};
 
 	String[] paq02110 =
 	{
-		"data/paquete02_110/JC_Bass-110D-02.wav",
-		"data/paquete02_110/JC_Bass-110G-02.wav",
-		"data/paquete02_110/JC_BeatA110-02.wav",
-		"data/paquete02_110/JC_BeatA110-04.wav",
-		"data/paquete02_110/JC_BeatA110-07.wav",
-		"data/paquete02_110/JC_BeatB110-02.wav",
-		"data/paquete02_110/JC_BeatB110-04.wav",
-		"data/paquete02_110/JC_BeatB110-07.wav",
-		"data/paquete02_110/JC_BeatC110-02.wav",
-		"data/paquete02_110/JC_BeatC110-04.wav",
-		"data/paquete02_110/JC_BeatC110-07.wav",
-		"data/paquete02_110/JC_EPiano110D-02.wav",
-		"data/paquete02_110/JC_EPiano110G-02.wav",
-		"data/paquete02_110/JC_Guitar110D-02.wav",
-		"data/paquete02_110/JC_Guitar110G-02.wav",
-		"data/paquete02_110/JC_Organ-110G-01.wav",
-		"data/paquete02_110/JC_Organ-110G-02.wav",
-		"data/paquete02_110/JC_Piano-110G-01.wav",
-		"data/paquete02_110/JC_Piano-110G-02.wav"
+		"data/paquetes/JC_Bass-110D-02.mp3",
+		"data/paquetes/JC_Bass-110G-02.mp3",
+		"data/paquetes/JC_BeatA110-02.mp3",
+		"data/paquetes/JC_BeatA110-04.mp3",
+		"data/paquetes/JC_BeatA110-07.mp3",
+		"data/paquetes/JC_BeatB110-02.mp3",
+		"data/paquetes/JC_BeatB110-04.mp3",
+		"data/paquetes/JC_BeatB110-07.mp3",
+		"data/paquetes/JC_BeatC110-02.mp3",
+		"data/paquetes/JC_BeatC110-04.mp3",
+		"data/paquetes/JC_BeatC110-07.mp3",
+		"data/paquetes/JC_EPiano110D-02.mp3",
+		"data/paquetes/JC_EPiano110G-02.mp3",
+		"data/paquetes/JC_Guitar110D-02.mp3",
+		"data/paquetes/JC_Guitar110G-02.mp3",
+		"data/paquetes/JC_Organ-110G-01.mp3",
+		"data/paquetes/JC_Organ-110G-02.mp3",
+		"data/paquetes/JC_Piano-110G-01.mp3",
+		"data/paquetes/JC_Piano-110G-02.mp3"
 	};
 
 	String[] paq02120 =
 	{
-		"data/paquete02_120/JC_Bass-120D-02.wav",
-		"data/paquete02_120/JC_Bass-120G-02.wav",
-		"data/paquete02_120/JC_BeatA120-02.wav",
-		"data/paquete02_120/JC_BeatA120-04.wav",
-		"data/paquete02_120/JC_BeatA120-06.wav",
-		"data/paquete02_120/JC_BeatB120-02.wav",
-		"data/paquete02_120/JC_BeatB120-04.wav",
-		"data/paquete02_120/JC_BeatB120-06.wav",
-		"data/paquete02_120/JC_BeatC120-02.wav",
-		"data/paquete02_120/JC_BeatC120-04.wav",
-		"data/paquete02_120/JC_BeatC120-06.wav",
-		"data/paquete02_120/JC_EPiano120D-02.wav",
-		"data/paquete02_120/JC_EPiano120G-02.wav",
-		"data/paquete02_120/JC_Guitar120G-01.wav",
-		"data/paquete02_120/JC_Guitar120G-02.wav",
-		"data/paquete02_120/JC_Organ-120D-02.wav",
-		"data/paquete02_120/JC_Organ-120G-02.wav",
-		"data/paquete02_120/JC_Piano-120D-02.wav",
-		"data/paquete02_120/JC_Piano-120G-02.wav"
+		"data/paquetes/JC_Bass-120D-02.mp3",
+		"data/paquetes/JC_Bass-120G-02.mp3",
+		"data/paquetes/JC_BeatA120-02.mp3",
+		"data/paquetes/JC_BeatA120-04.mp3",
+		"data/paquetes/JC_BeatA120-06.mp3",
+		"data/paquetes/JC_BeatB120-02.mp3",
+		"data/paquetes/JC_BeatB120-04.mp3",
+		"data/paquetes/JC_BeatB120-06.mp3",
+		"data/paquetes/JC_BeatC120-02.mp3",
+		"data/paquetes/JC_BeatC120-04.mp3",
+		"data/paquetes/JC_BeatC120-06.mp3",
+		"data/paquetes/JC_EPiano120D-02.mp3",
+		"data/paquetes/JC_EPiano120G-02.mp3",
+		"data/paquetes/JC_Guitar120G-01.mp3",
+		"data/paquetes/JC_Guitar120G-02.mp3",
+		"data/paquetes/JC_Organ-120D-02.mp3",
+		"data/paquetes/JC_Organ-120G-02.mp3",
+		"data/paquetes/JC_Piano-120D-02.mp3",
+		"data/paquetes/JC_Piano-120G-02.mp3"
 	};
 
 	String[] paq01130 =
 	{
-		"data/paquete01_130/JC_Bass-130A-01.wav",
-		"data/paquete01_130/JC_Bass-130C-01.wav",
-		"data/paquete01_130/JC_BeatA130-01.wav",
-		"data/paquete01_130/JC_BeatA130-05.wav",
-		"data/paquete01_130/JC_BeatA130-06.wav",
-		"data/paquete01_130/JC_BeatB130-01.wav",
-		"data/paquete01_130/JC_BeatB130-05.wav",
-		"data/paquete01_130/JC_BeatB130-06.wav",
-		"data/paquete01_130/JC_BeatC130-01.wav",
-		"data/paquete01_130/JC_BeatC130-05.wav",
-		"data/paquete01_130/JC_BeatC130-06.wav",
-		"data/paquete01_130/JC_EPiano130A-01.wav",
-		"data/paquete01_130/JC_EPiano130C-01.wav",
-		"data/paquete01_130/JC_EPiano130C-02.wav",
-		"data/paquete01_130/JC_Guitar130A-01.wav",
-		"data/paquete01_130/JC_Guitar130C-01.wav",
-		"data/paquete01_130/JC_Organ-130A-01.wav",
-		"data/paquete01_130/JC_Organ-130A-02.wav",
-		"data/paquete01_130/JC_Piano-130C-01.wav"
+		"data/paquetes/JC_Bass-130A-01.mp3",
+		"data/paquetes/JC_Bass-130C-01.mp3",
+		"data/paquetes/JC_BeatA130-01.mp3",
+		"data/paquetes/JC_BeatA130-05.mp3",
+		"data/paquetes/JC_BeatA130-06.mp3",
+		"data/paquetes/JC_BeatB130-01.mp3",
+		"data/paquetes/JC_BeatB130-05.mp3",
+		"data/paquetes/JC_BeatB130-06.mp3",
+		"data/paquetes/JC_BeatC130-01.mp3",
+		"data/paquetes/JC_BeatC130-05.mp3",
+		"data/paquetes/JC_BeatC130-06.mp3",
+		"data/paquetes/JC_EPiano130A-01.mp3",
+		"data/paquetes/JC_EPiano130C-01.mp3",
+		"data/paquetes/JC_EPiano130C-02.mp3",
+		"data/paquetes/JC_Guitar130A-01.mp3",
+		"data/paquetes/JC_Guitar130C-01.mp3",
+		"data/paquetes/JC_Organ-130A-01.mp3",
+		"data/paquetes/JC_Organ-130A-02.mp3",
+		"data/paquetes/JC_Piano-130C-01.mp3"
 	};
 
 	String[] paq02130 =
 	{
-		"data/paquete02_130/JC_Bass-130A-02.wav",
-		"data/paquete02_130/JC_Bass-130C-02.wav",
-		"data/paquete02_130/JC_BeatA130-02.wav",
-		"data/paquete02_130/JC_BeatA130-04.wav",
-		"data/paquete02_130/JC_BeatA130-07.wav",
-		"data/paquete02_130/JC_BeatB130-02.wav",
-		"data/paquete02_130/JC_BeatB130-04.wav",
-		"data/paquete02_130/JC_BeatB130-07.wav",
-		"data/paquete02_130/JC_BeatC130-02.wav",
-		"data/paquete02_130/JC_BeatC130-04.wav",
-		"data/paquete02_130/JC_BeatC130-07.wav",
-		"data/paquete02_130/JC_EPiano130A-02.wav",
-		"data/paquete02_130/JC_Guitar130A-02.wav",
-		"data/paquete02_130/JC_Guitar130C-02.wav",
-		"data/paquete02_130/JC_Organ-130C-01.wav",
-		"data/paquete02_130/JC_Organ-130C-02.wav",
-		"data/paquete02_130/JC_Piano-130A-01.wav",
-		"data/paquete02_130/JC_Piano-130A-02.wav",
-		"data/paquete02_130/JC_Piano-130C-02.wav"
+		"data/paquetes/JC_Bass-130A-02.mp3",
+		"data/paquetes/JC_Bass-130C-02.mp3",
+		"data/paquetes/JC_BeatA130-02.mp3",
+		"data/paquetes/JC_BeatA130-04.mp3",
+		"data/paquetes/JC_BeatA130-07.mp3",
+		"data/paquetes/JC_BeatB130-02.mp3",
+		"data/paquetes/JC_BeatB130-04.mp3",
+		"data/paquetes/JC_BeatB130-07.mp3",
+		"data/paquetes/JC_BeatC130-02.mp3",
+		"data/paquetes/JC_BeatC130-04.mp3",
+		"data/paquetes/JC_BeatC130-07.mp3",
+		"data/paquetes/JC_EPiano130A-02.mp3",
+		"data/paquetes/JC_Guitar130A-02.mp3",
+		"data/paquetes/JC_Guitar130C-02.mp3",
+		"data/paquetes/JC_Organ-130C-01.mp3",
+		"data/paquetes/JC_Organ-130C-02.mp3",
+		"data/paquetes/JC_Piano-130A-01.mp3",
+		"data/paquetes/JC_Piano-130A-02.mp3",
+		"data/paquetes/JC_Piano-130C-02.mp3"
 	};
 
 	color[] parqueZeroOneNF()
 	{
 		//01_95 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq0195[i];
 
@@ -287,8 +287,8 @@ class RutasPaquetes
 	color[] parqueZeroOneT()
 	{
 		//01_110 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01110[i];
 
@@ -324,8 +324,8 @@ class RutasPaquetes
 	color[] parqueZeroOneTw()
 	{
 		//01_120 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01120[i];
 
@@ -361,8 +361,8 @@ class RutasPaquetes
 	color[] parqueZeroTwoNF()
 	{
 		//02_95 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq0295[i];
 
@@ -398,8 +398,8 @@ class RutasPaquetes
 	color[] parqueZeroTwoT()
 	{
 		//02_110 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02110[i];
 
@@ -435,8 +435,8 @@ class RutasPaquetes
 	color[] parqueZeroTwoTw()
 	{
 		//02_120 - Parque
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02120[i];
 
@@ -472,8 +472,8 @@ class RutasPaquetes
 	color[] ciudadZeroOneNF()
 	{
 		//01_95 - Ciudad
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq0195[i];
 
@@ -509,8 +509,8 @@ class RutasPaquetes
 	color[] ciudadZeroTwoNF()
 	{
 		//02_95 - Ciudad
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq0295[i];
 
@@ -546,8 +546,8 @@ class RutasPaquetes
 	color[] ciudadZeroOneTh()
 	{
 		//01_130 - Ciudad
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01130[i];
 
@@ -583,8 +583,8 @@ class RutasPaquetes
 	color[] ciudadZeroTwoTh()
 	{
 		//02_130 - Ciudad
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02130[i];
 
@@ -620,8 +620,8 @@ class RutasPaquetes
 	color[] espacioZeroOneT()
 	{
 		//01_110 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01110[i];
 
@@ -657,8 +657,8 @@ class RutasPaquetes
 	color[] espacioZeroOneTw()
 	{
 		//01_120 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01120[i];
 
@@ -694,8 +694,8 @@ class RutasPaquetes
 	color[] espacioZeroOneTh()
 	{
 		//01_130 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq01130[i];
 
@@ -731,8 +731,8 @@ class RutasPaquetes
 	color[] espacioZeroTwoT()
 	{
 		//02_110 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02110[i];
 
@@ -768,8 +768,8 @@ class RutasPaquetes
 	color[] espacioZeroTwoTw()
 	{
 		//02_120 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02120[i];
 
@@ -805,8 +805,8 @@ class RutasPaquetes
 	color[] espacioZeroTwoTh()
 	{
 		//02_130 - espacio
-		color[] cc = new color[19];
-		for(int i = 0; i < 19; i++)
+		color[] cc = new color[clusters - 1];
+		for(int i = 0; i < clusters - 1; i++)
 		{
 			rutaPaquetes[i] = paq02130[i];
 
