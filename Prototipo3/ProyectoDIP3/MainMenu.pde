@@ -6,6 +6,9 @@ import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 import gifAnimation.*;
 
+//Ruta de las canciones a cargar
+String[] rutaPaquetes =  new String[19];
+
 //Menu de help
 HelpMenu h;
 PFont mono;
@@ -16,7 +19,7 @@ SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
 int paquete;
-int clusters = 16;
+int clusters = 19;
 PImage img;
 boolean centered;
 Kinect kinect;
