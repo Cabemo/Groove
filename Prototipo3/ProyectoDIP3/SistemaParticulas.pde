@@ -5,6 +5,8 @@ import org.openkinect.tests.*;
 
 class SistemaParticulas {
 	Ball[][] sp;
+  boolean[] seleccionados;
+  float[] tiempo;
 	float[][] posiciones;
 	color[]colores = {#16a085, //verde
 	                  #e67e22, //naranja
@@ -22,7 +24,9 @@ class SistemaParticulas {
   Kinect kinect;
   
 	SistemaParticulas(int size, Kinect kinect) {
-		int numParticulas = 500/size;
+		int numParticulas = 250/size;
+    seleccionados = new boolean[size];
+    tiempo = new float[size];
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
     this.kinect = kinect;
@@ -72,6 +76,28 @@ class SistemaParticulas {
 			}
 		}
 	}
+  void seleccionados() {
+    PVector jugador = tracker.getPos();
+    for(int i = 1; i < seleccionados.length; i++) {
+      if(jugador.x >= posiciones[i][0] - (displayWidth/40) && jugador.x <= posiciones[i][0] + (displayWidth/40)) {
+        if(jugador.y >= posiciones[i][1] - (displayWidth/40) && jugador.y <= posiciones[i][1] + (displayWidth/40)) {
+          seleccionados[i] = true;
+          tiempo[i] += frameRate;
+          noFill();
+          stroke(255);
+          strokeWeight(4);
+          ellipse(100, 100, 100,100);
+          fill(255);
+          ellipse(100, 100, map(tiempo[i], 0, 590, 0, 100), map(tiempo[i], 0, 590, 0, 100));
+          if(tiempo[i] >= 590) tiempo[i] = 590;
+        }
+      }
+      else {
+        tiempo[i] = 0;
+        seleccionados[i] = false;
+      }
+    }
+  }
 	void centroG(boolean azar, int main, float mainX, float mainY) {
 		int x = width/(sp.length + 2);
 		int y = height/8;
@@ -93,5 +119,4 @@ class SistemaParticulas {
 			main--;
 		}
 	}
-
 }

@@ -15,6 +15,7 @@ class Ball
 		acceleration = new PVector(0,0);
 		mass = random(1,10);
 		this.c = c;
+   
 	}
 
 	void move()
@@ -58,10 +59,12 @@ class Ball
 		gravity = new PVector(0,.2);
 		gravity.mult(mass);
 		//Let's add gravity and friction
-		if((tracker.getPos().x < margenDerecho && tracker.getPos().y > margenIzquierdo && tracker.getCount() != 0)) //&& (mouseY > margenTop))
+    
+    if(tracker.count != 0 || stage == 1) //&& (mouseY > margenTop))
 		{
 			centro = centro.sub(location);
-			if(keyCode == 'E') centro.setMag(.2);
+      if(stage == 1) centro.setMag(.98);
+			else if(keyCode == 'E') centro.setMag(.2);
 			else if(keyCode == 'C') centro.setMag(.9*mass);
 			else if(m) centro.setMag(.9*mass);
 			else if(keyCode == 'G')
@@ -70,7 +73,7 @@ class Ball
 				location.y = mouseY;
 			}
 			else if(!m) centro.setMag(.95);
-			addForce(centro);
+      addForce(centro);
 		}
 		else
 		{

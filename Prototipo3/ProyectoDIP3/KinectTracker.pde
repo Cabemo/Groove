@@ -8,7 +8,7 @@ class KinectTracker {
 int kw = 640;
 int kh = 480; 
 // this is the depth range, distance past which we will ignore all pixels 
-int threshold= 700;
+int threshold= 800;
 // Raw location 
 PVector loc; 
 // Interpolated location
@@ -19,7 +19,7 @@ PImage[] backgrounds = {
   loadImage("data/parque.png"), 
   loadImage("data/ciudad.png"), 
   loadImage("data/espacio.png"),
-  loadImage("data/granja.png")};
+  loadImage("data/start.png")};
 PImage display, background;
 float count;
 float widthRelation, heightRelation;
@@ -31,15 +31,16 @@ KinectTracker() {
   loc = new PVector(0,0);
   lerpedLoc = new PVector(0,0);
   //DISEÑO
-  paquete = (int)random(4);
-  
   background = backgrounds[paquete];
   background.resize(width, height);
   display = createImage(width, height, RGB);
   widthRelation = width/640;
   heightRelation = height/480;
 }
-
+void setBackground(int indice) {
+  background = backgrounds[indice];
+  background.resize(width, height);
+}
 void track() { 
 // Get the raw depth as array of integers
 depth = kinect.getRawDepth();
@@ -63,7 +64,7 @@ sumX += x; sumY += y; count++;
 // As long as we found something
 if (count != 0) { 
 loc = new PVector(widthRelation*sumX/count,heightRelation*sumY/count);
-fill(255);
+fill(0);
 ellipse(loc.x, loc.y, 10, 10);
 } 
 // Interpolating the location, doing it arbitrarily for now 
@@ -102,7 +103,6 @@ if (rawDepth < threshold) {
   
   display.pixels[pix] = color(#FFFFFF); 
 } else { 
-  //map(pix, 0, 326399, 0, background.width*background.height);
   display.pixels[pix] = background.pixels[pix]; 
 } 
 } 
@@ -113,10 +113,10 @@ display.updatePixels();
 image(display,0,0); 
 }
 // stop it!
-
 void quit() { 
 kinect.stopDepth(); 
-} int getThreshold() { 
+} 
+int getThreshold() { 
 return threshold; 
 }
 

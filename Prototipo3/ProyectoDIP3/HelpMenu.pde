@@ -35,7 +35,6 @@ class HelpMenu
 		ellipse(position.x, position.y, currentVolume, currentVolume);
 
 		//
-    System.out.println(displayWidth);
 		currentVolume = map(mouseX, 0, displayWidth, 0, size);
 
 		//constrain(currentVolume, 0, size);
@@ -43,8 +42,11 @@ class HelpMenu
 
 	void backbtn()
 	{
-		textSize(displayWidth/15);
-		text("GROOVE", 10, displayWidth/15);
+		textAlign(CENTER);
+    textFont(manbow);
+    textSize(150);
+    fill(255);
+		text("Help", displayWidth/2, displayHeight/4);
 	}
 
 	void gifs()

@@ -8,11 +8,13 @@ import gifAnimation.*;
 
 //Menu de help
 HelpMenu h;
+Boton atras, start, help;
 PFont mono;
 Gif[] gifs = new Gif[4];
+float tiempo;
 
 //Sistema de particulas y Kinect
-SistemaParticulas p1;
+SistemaParticulas p1, o;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
 int paquete;
@@ -25,12 +27,6 @@ Minim minim;
 AudioPlayer song;
 AudioInput input;
 PImage startScreen;
-
-//inicializando botones
-int startX, startY;
-int helpX, helpY;
-int atrasX, atrasY;
-int atrasSize = 90, startSize = 90, helpSize = 90;
 int stage;
 
 //Font para el texto
@@ -43,167 +39,155 @@ boolean clickedStart = false;
 boolean clickedHelp = false;
 boolean clickedAtras = false;
 
-color startColor, helpColor, atrasColor;
-color startHighlight, helpHighlight, atrasHighlight;
-
-void settings()
-{  
-    for(int i = 0; i < gifs.length; i++)
-   {
-     gifs[i] = new Gif(this, "helpImages/"+(i+1)+".gif");
-   }
-   h = new HelpMenu(gifs);
-   size(displayWidth, displayHeight);//necesario para kinect no cambiar!
-  //fullScreen();
-  margenDerecho = floor((width-width/10));
-  margenIzquierdo = floor((width/10));
-  kinect = new Kinect(this);
-  tracker = new KinectTracker();
-   p1 = new SistemaParticulas(clusters, kinect);
- centered = false;
+void settings() {  
+    for(int i = 0; i < gifs.length; i++) {
+        gifs[i] = new Gif(this, "helpImages/"+(i+1)+".gif");
+    }
+    h = new HelpMenu(gifs);
+    size(displayWidth, displayHeight);//necesario para kinect no cambiar!
+    margenDerecho = floor((width-width/10));
+    margenIzquierdo = floor((width/10));
+    kinect = new Kinect(this);
+    tracker = new KinectTracker();
+    p1 = new SistemaParticulas(clusters, kinect);
+    o = new SistemaParticulas(1, kinect);
+    centered = false;
 }
 
 void setup(){
-    p1.colorear();
-   p1.generarPosiciones(clusters);
-  //Botones
-  startX = displayWidth/2-(startSize);
-  startY = displayHeight/2-displayHeight/10;
-  helpX = displayWidth/2-(startSize);
-  helpY = displayHeight/2+displayHeight/8;
-  atrasX = displayWidth-3*atrasSize;
-  atrasY = displayHeight/13;
-  startColor = color(255);
-  helpColor = color(255);
-  atrasColor = color(255);
-  startHighlight = color(100);
-  helpHighlight = color(100);
-  atrasHighlight = color(100);
+tiempo = 0;
+paquete = (int)random(3);
+p1.colorear();
+ p1.generarPosiciones(clusters);
+ o.colorear(255);
 
-    //Musica
-    minim = new Minim(this);
-    song = minim.loadFile("Soulful.mp3");
 
-  //cual stage es el que activara
-  stage = 1;
-  startScreen = loadImage("data/start.png");
-  image(startScreen, 0, 0, displayWidth, displayHeight);
-  baron = createFont("Baron Neue.ttf", 32, true);
-  manbow = createFont("manbow tone.ttf", 110, true);
+//Musica
+minim = new Minim(this);
+song = minim.loadFile("Soulful.mp3");
 
+//cual stage es el que activara
+stage = 1;
+startScreen = loadImage("data/start.png");
+image(startScreen, 0, 0, displayWidth, displayHeight);
+baron = createFont("Baron Neue.ttf", 1);
+manbow = createFont("manbow tone.ttf", 1);
+start = new Boton(displayWidth/2, displayHeight/2, 180, 80, "START", 25, baron);
+help = new Boton(displayWidth/2, 2*displayHeight/3, 180, 80, "HELP", 25, baron);
+atras = new Boton(displayWidth - 200, 100, 180, 80, "BACK", 25, baron);
 }
 
 void draw(){
-  update(mouseX, mouseY);
-  mouseClick();
-  if (startOver && !helpOver) {
-    startColor = startHighlight;
-  }else if (helpOver && !startOver) {
-    helpColor = helpHighlight;
-    startColor = color(255);
-    song.pause();
-  }else{
 
-  helpColor = color(255);
-  startColor = color(255);
-  song.pause();
-  }
-    if (stage == 1){
-      stroke(0);
-  fill(startColor);
-  rect(startX, startY, startSize+90, startSize-10, 15);
-  fill(helpColor);
-  rect(helpX, helpY, helpSize+90, helpSize-10, 15);
-    textAlign(CENTER);
-    textFont(manbow);
-    textSize(150);
-    fill(255);
-    text("GR   OVE", displayWidth/2, displayHeight/4);
-    textFont(baron);
-    textSize(25);
-    fill(0);
-    text("START", displayWidth/2, startY+((startSize)/2)+2);
-    text("HELP", displayWidth/2, helpY+(startSize)/2+2);
-}else if (stage == 2) {
-  background(0);
-      h.volumen();
-   h.backbtn();
-   h.gifs();
-    }else if (stage == 3) {
-    //Juego
-    if(overAtras()) {
-      atrasColor = atrasHighlight;
-    }
-    else atrasColor = color(0);
-    song.pause();
-    mouseClick();
-    centerWindow();
+if (stage == 1){
+    song.play();
+    System.out.println(tracker.getCount());
+    o.centroG(false, 1, displayWidth/2 - 50, displayHeight/4 - 50);
+    tracker.setBackground(3);
     tracker.display();
-    fill(255);
-    rect(atrasX, atrasY, atrasSize+90, atrasSize-10, 15);
     tracker.track();
-    PVector t = tracker.getPos();
-     p1.centroG(true, 1, t.x, t.y);
-     p1.move();
-    }
+    start.display();
+    help.display();
+    title();
+    stepBack();
+    o.move();
+    }  else if (stage == 2) {
+        background(0);
+        mouseClick();
+        centerWindow();
+        tracker.display();
+        tracker.track();
+        atras.display();
+        stepBack();
+        h.volumen();
+        h.backbtn();
+        h.gifs();
+    }  else if (stage == 3) {
+            //Juego
+            tracker.setBackground(paquete);
+            song.pause();
+            mouseClick();
+            centerWindow();
+            tracker.display();
+            tracker.track();
+            stepBack();
+            p1.seleccionados();
+            PVector t = tracker.getPos();
+             p1.centroG(true, 1, t.x, t.y);
+             p1.move();
+      }  
+      mouseClick();
 }
 void dispose() {
-  kinect.stopDepth();
+kinect.stopDepth();
 }
 void centerWindow()
 {
-  if(frame != null && centered == false)
-  {
-    frame.setLocation(displayWidth/2-width/2,displayHeight/2-height/3);
-    centered = true;
-  }
+if(frame != null && centered == false)
+{
+frame.setLocation(displayWidth/2-width/2,displayHeight/2-height/3);
+centered = true;
 }
-void update(int x, int y){
-  if (overStart() && stage == 1) {
-  song.play();
-  startOver = true;
-  helpOver = false;
-}else if (overHelp()) {
-  startOver = false;
-  helpOver = true;
-  }else{
-  startOver = helpOver = false;
-  }
 }
+void stepBack() {
+if(tracker.getCount() > 30000) {
+tracker.loc = new PVector(0, 0);
+background(255, map(tracker.getCount(), 30000, 100000, 255, 0));
+fill(0);
+textAlign(CENTER);
+textFont(baron);
+textSize(150);
+text("Step back!", width/2, height/2);
 
-boolean overStart(){
-  if (mouseX >= startX && mouseX <= startX+startSize+90 && mouseY >= startY && mouseY <= startY+startSize-10) {
-  return true;
-  }else return false;
 }
-
-boolean overHelp(){
-  if (mouseX >= helpX && mouseX <= helpX+helpSize+90 && mouseY >= helpY && mouseY <= helpY+helpSize-10) {
-  return true;
-  }else return false;
 }
-boolean overAtras(){
-  if (mouseX >= atrasX && mouseX <= atrasX+atrasSize+90 && mouseY >= atrasY && mouseY <= atrasY+atrasSize-10) {
-  return true;
-  }else return false;
+void title() {
+textAlign(CENTER);
+textFont(manbow);
+textSize(150);
+fill(255);
+text("GR   OVE", displayWidth/2, displayHeight/4);
 }
-
 void mouseClick(){
-  if (overStart() && mousePressed){
+    float tamano = map(tiempo, 0, 590, 0, 100);
+    stroke(255);
+    noFill();
+    strokeWeight(4);
+    ellipse(100, 100, 100, 100);
+    fill(255);
+    noStroke();
+    ellipse(100, 100, tamano, tamano);
+    if (start.over() && stage == 1){
+    tiempo += frameRate;
+    if(tiempo >= 590) {
+    tiempo = 590;
     clickedStart = true;
     clickedHelp = false;
     clickedAtras = false;
     stage = 3;
-  }else if(overHelp() && mousePressed){
+    }
+    }else if(help.over() && stage == 1){
+    tiempo += frameRate;
+    if(tiempo >= 590) {
+    tiempo = 590;
     clickedHelp = true;
     clickedStart = false;
     clickedAtras = false;
     stage = 2;
-  }
-  else if(overAtras() && mousePressed) {
+    }
+    }
+    else if(atras.over() && (stage == 3 || stage == 2)) {
+    tiempo += frameRate;
+    if(tiempo >= 590) {
+    paquete = (int)random(3);
+    tiempo = 590;
     clickedAtras = true;
     clickedHelp = false;
     clickedStart = false;
     stage = 1;
-}
+    }
+    }
+    else {
+    tiempo = 0;
+    }
 }
