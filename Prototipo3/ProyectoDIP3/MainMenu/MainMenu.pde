@@ -111,9 +111,9 @@ if (stage == 1){
             song.pause();
             mouseClick();
             centerWindow();
-            atras.display();
             tracker.display();
             tracker.track();
+            atras.display();
             stepBack();
             p1.seleccionados();
             PVector t = tracker.getPos();
@@ -184,6 +184,8 @@ void mouseClick(){
     tiempo += frameRate;
     if(tiempo >= 590) {
     paquete = (int)random(3);
+    p1.generarPosiciones(clusters);
+    p1.colorear();
     tiempo = 590;
     clickedAtras = true;
     clickedHelp = false;

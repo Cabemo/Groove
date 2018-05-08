@@ -8,7 +8,7 @@ class KinectTracker {
 int kw = 640;
 int kh = 480; 
 // this is the depth range, distance past which we will ignore all pixels 
-int threshold= 800;
+int threshold= 500;
 // Raw location 
 PVector loc; 
 // Interpolated location

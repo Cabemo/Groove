@@ -18,93 +18,7 @@ class SistemaParticulas {
     tiempo = new float[size];
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
-    this.kinect = kinect;
-
-
-    	int auxPaq;
-    	rutas = new RutasPaquetes();
-
-    	if(paquete == 0)
-    	{
-    		//parque
-    		//solo elige entre 95, 110 y 120
-    		auxPaq = (int)random(6);
-    		switch (auxPaq)
-    		{
-    			case 0:
-    				//01_95
-    				colores = rutas.parqueZeroOneNF();
-    			break;
-    			case 1:
-    				//01_110
-    				colores = rutas.parqueZeroOneT();
-    			break;
-    			case 2:
-    				//01_120
-    				colores = rutas.parqueZeroOneTw();
-    			break;
-    			case 3:
-    				//02_95
-    				colores = rutas.parqueZeroTwoNF();
-    			break;
-    			case 4:
-    				//02_110
-    				colores = rutas.parqueZeroTwoT();
-    			break;
-    			case 5:
-    				//02_120
-    				colores =  rutas.parqueZeroTwoTw();
-    			break;
-    		}
-    	}
-    	else if(paquete == 1)
-    	{
-    		//ciudad
-    		//95 y 130 unicamente
-    		auxPaq = (int)random(4);
-    		switch (auxPaq)
-    		{
-    			case 0:
-    				colores = rutas.ciudadZeroOneNF();
-    			break;
-    			case 1:
-    				colores = rutas.ciudadZeroTwoNF();
-    			break;
-    			case 2:
-    				colores = rutas.ciudadZeroOneTh();
-    			break;
-    			case 3:
-    				colores = rutas.ciudadZeroTwoTh();
-    			break;
-    		}
-    	}
-    	else
-    	{
-    		//espacio
-    		//110,120,130
-    		auxPaq = (int)random(6);
-     		switch (auxPaq)
-    		{
-    			case 0:
-    				colores = rutas.espacioZeroOneT();
-    			break;
-    			case 1:
-    				colores = rutas.espacioZeroOneTw();
-    			break;
-    			case 2:
-    				colores = rutas.espacioZeroOneTh();
-    			break;
-    			case 3:
-    				colores = rutas.espacioZeroTwoT();
-    			break;
-    			case 4:
-    				colores = rutas.espacioZeroTwoTw();
-    			break;
-    			case 5:
-    				colores = rutas.espacioZeroTwoTh();
-    			break;
-    		}
-    	}
+    this.kinect = kinect;    
 	}
 	
 	void move() {
@@ -119,6 +33,90 @@ class SistemaParticulas {
 	}
 
 	void colorear() {
+      int auxPaq;
+      rutas = new RutasPaquetes();
+
+      if(paquete == 0)
+      {
+        //parque
+        //solo elige entre 95, 110 y 120
+        auxPaq = (int)random(6);
+        switch (auxPaq)
+        {
+          case 0:
+            //01_95
+            colores = rutas.parqueZeroOneNF();
+          break;
+          case 1:
+            //01_110
+            colores = rutas.parqueZeroOneT();
+          break;
+          case 2:
+            //01_120
+            colores = rutas.parqueZeroOneTw();
+          break;
+          case 3:
+            //02_95
+            colores = rutas.parqueZeroTwoNF();
+          break;
+          case 4:
+            //02_110
+            colores = rutas.parqueZeroTwoT();
+          break;
+          case 5:
+            //02_120
+            colores =  rutas.parqueZeroTwoTw();
+          break;
+        }
+      }
+      else if(paquete == 1)
+      {
+        //ciudad
+        //95 y 130 unicamente
+        auxPaq = (int)random(4);
+        switch (auxPaq)
+        {
+          case 0:
+            colores = rutas.ciudadZeroOneNF();
+          break;
+          case 1:
+            colores = rutas.ciudadZeroTwoNF();
+          break;
+          case 2:
+            colores = rutas.ciudadZeroOneTh();
+          break;
+          case 3:
+            colores = rutas.ciudadZeroTwoTh();
+          break;
+        }
+      }
+      else
+      {
+        //espacio
+        //110,120,130
+        auxPaq = (int)random(6);
+         switch (auxPaq)
+        {
+          case 0:
+            colores = rutas.espacioZeroOneT();
+          break;
+          case 1:
+            colores = rutas.espacioZeroOneTw();
+          break;
+          case 2:
+            colores = rutas.espacioZeroOneTh();
+          break;
+          case 3:
+            colores = rutas.espacioZeroTwoT();
+          break;
+          case 4:
+            colores = rutas.espacioZeroTwoTw();
+          break;
+          case 5:
+            colores = rutas.espacioZeroTwoTh();
+          break;
+        }
+      }
     color c;
 		for(int i = 0; i < sp.length; i++) {
       if(i == 0) c = #FFFFFF;
