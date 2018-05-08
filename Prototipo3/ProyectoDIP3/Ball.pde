@@ -66,7 +66,7 @@ class Ball
 			//else if(keyCode == 'C') centro.setMag(.9*mass); // contrae
 			//else 
 			if(m) centro.setMag(beatMass*mass);
-			else if(!m) centro.setMag(.9);
+			else if(!m) centro.setMag(beatMass);
 			addForce(centro);
 			
 		}

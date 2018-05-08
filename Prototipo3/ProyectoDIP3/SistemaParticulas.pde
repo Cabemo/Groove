@@ -64,7 +64,7 @@ class SistemaParticulas {
 		}
 	}
 
-	void centroG(boolean azar, int main, float desm) {
+	void centroG(boolean azar, int main, float desm[]) {
 		int x = width/(sp.length + 2);
 		int y = height/8;
 		int contador = 1;
@@ -72,15 +72,16 @@ class SistemaParticulas {
 		 for(int i = 0; i < sp.length; i++) {
 			for(Ball b : sp[i]) {
 					if(main > 0) {
-						b.centroG(mouseX, mouseY, false, 0.0);
+						b.centroG(mouseX, mouseY, false, desm[i]); 
 					}
 					else {
-						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true, desm);
+						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true, desm[i]);
 						else {
-							b.centroG(x * contador, y * 4, true, desm);
+							b.centroG(x * contador, y * 4, true, desm[i]);
 						}
 					}
 			}
+					println("b#"+i+"is: "+desm[i]);
 			contador++;
 			main--;
 		}

@@ -4,14 +4,14 @@ import ddf.minim.analysis.*;
 SistemaParticulas p1;
 float margenDerecho; //describe el limite a la derecha
 float margenIzquierdo; // describe el limite a la izquierda
-int clusters = 5;
+int clusters = 7;
 
 /**/
 
 Minim minim;
-AudioPlayer player;
+AudioPlayer[] players;
 BeatDetect beat;
-float newMass;
+float[] newMass;
 
 
 void settings()
@@ -23,7 +23,14 @@ void settings()
  	p1 = new SistemaParticulas(clusters);
  	
  	minim = new Minim(this);
-	player = minim.loadFile("groove.mp3", 2048);
+ 	players = new AudioPlayer[6];
+ 	newMass = new float[7];
+	players[0] = minim.loadFile("grooved.mp3", 2048);
+	players[1] = minim.loadFile("grooved.mp3", 2048);
+	players[2] = minim.loadFile("grooved.mp3", 2048);
+	players[3] = minim.loadFile("grooved.mp3", 2048);
+	players[4] = minim.loadFile("grooved.mp3", 2048);
+	players[5] = minim.loadFile("grooved.mp3", 2048);
 
 }
 
@@ -32,20 +39,37 @@ void setup()
  	p1.colorear();
  	p1.generarPosiciones(clusters);
 
- 	player.loop();
+ 	players[0].loop();
+ 	/*players[1].loop();
+ 	players[2].loop();
+ 	players[3].loop();
+ 	players[4].loop();
+ 	players[5].loop();*/
+ 	newMass[0] = 0.9;
+ 	newMass[1] = 0.4;
+ 	newMass[2] = 0.4;
+ 	newMass[3] = 0.4;
+ 	newMass[4] = 0.4;
+ 	newMass[5] = 0.4;
+ 	newMass[6] = 0.4;
  	beat = new BeatDetect();
- 	newMass = 0.4;
 }
 
 void draw()
 {
-	beat.detect(player.mix);
  	background(0);
+	for(int i = 0; i < players.length;  i++)
+	{
+		if(players[i].isPlaying())
+		{
+
+			beat.detect(players[i].mix);
+	 		newMass[i+1] *= 0.95;
+		 	if ( newMass[i+1] < 0.2 ) newMass[i+1] = 0.3;
+		 	else if ( beat.isOnset() ) newMass[i+1] = 0.7;
+		}
+	}
  	
- 	//map(newMass, 20, 80, 0.2, 0.9);
- 	newMass *= 0.95;
- 	if ( beat.isOnset() ) newMass = 0.9;
- 	if ( newMass < 0.2 ) newMass = 0.2;
 
  	p1.centroG(true, 1, newMass);
 
