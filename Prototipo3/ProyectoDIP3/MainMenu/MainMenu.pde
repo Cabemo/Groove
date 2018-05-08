@@ -78,6 +78,7 @@ fuerzas = new float[clusters];
 fuerzas[fuerzas.length - 1] = 0.9;
 for(int i = 0; i < players.length; i++) {
   fuerzas[i] = 0.9;
+  println(rutaPaquetes[i]);
   players[i] = minim.loadFile(rutaPaquetes[i], 2048);
 }
 //cual stage es el que activara
@@ -95,7 +96,6 @@ void draw(){
 
 if (stage == 1){
     song.play();
-    System.out.println(tracker.getCount());
     o.centroG(false, 1, displayWidth/2 - 50, displayHeight/4 - 50);
     tracker.setBackground(3);
     tracker.display();

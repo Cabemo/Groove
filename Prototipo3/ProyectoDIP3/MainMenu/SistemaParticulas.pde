@@ -152,9 +152,9 @@ class SistemaParticulas {
   void seleccionados() {
     PVector jugador = tracker.getPos();
     for(int i = 1; i < seleccionados.length; i++) {
+      
       if(jugador.x >= posiciones[i][0] - (displayWidth/40) && jugador.x <= posiciones[i][0] + (displayWidth/40)) {
         if(jugador.y >= posiciones[i][1] - (displayWidth/40) && jugador.y <= posiciones[i][1] + (displayWidth/40)) {
-          seleccionados[i] = true;
           tiempo[i] += frameRate;
           noFill();
           stroke(255);
@@ -162,7 +162,13 @@ class SistemaParticulas {
           ellipse(100, 100, 100,100);
           fill(255);
           ellipse(100, 100, map(tiempo[i], 0, 590, 0, 100), map(tiempo[i], 0, 590, 0, 100));
-          if(tiempo[i] >= 590) tiempo[i] = 590;
+          if(tiempo[i] >= 590) {
+            tiempo[i] = 590;
+            ellipse(posiciones[i][0], posiciones[i][1], 10, 10);
+            seleccionados[i] = ((seleccionados[i]) ? false : true);
+            if(seleccionados[i]) players[i - 1].loop();
+            else players[i - 1].pause();
+          }
         }
       }
       else {
