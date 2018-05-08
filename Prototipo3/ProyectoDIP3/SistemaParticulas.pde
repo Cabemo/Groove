@@ -1,4 +1,3 @@
-import ddf.minim.*;
 class SistemaParticulas {
 	Ball[][] sp;
 	float[][] posiciones;
@@ -65,7 +64,7 @@ class SistemaParticulas {
 		}
 	}
 
-	void centroG(boolean azar, int main) {
+	void centroG(boolean azar, int main, float desm) {
 		int x = width/(sp.length + 2);
 		int y = height/8;
 		int contador = 1;
@@ -73,12 +72,12 @@ class SistemaParticulas {
 		 for(int i = 0; i < sp.length; i++) {
 			for(Ball b : sp[i]) {
 					if(main > 0) {
-						b.centroG(mouseX, mouseY, false);
+						b.centroG(mouseX, mouseY, false, 0.0);
 					}
 					else {
-						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
+						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true, desm);
 						else {
-							b.centroG(x * contador, y * 4, true);
+							b.centroG(x * contador, y * 4, true, desm);
 						}
 					}
 			}

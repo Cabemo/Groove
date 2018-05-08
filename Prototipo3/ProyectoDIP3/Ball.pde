@@ -50,7 +50,7 @@ class Ball
 		ellipse(location.x,location.y,mass,mass);
 	}
 
-	void centroG(float x, float y, boolean m)
+	void centroG(float x, float y, boolean m, float beatMass)
 	{
 		//Declare forces
 		centro = new PVector(x, y);
@@ -62,14 +62,10 @@ class Ball
 		{
 			centro = centro.sub(location);
 			
-			if(keyCode == 'E') centro.setMag(.2); //expande 
-			else if(keyCode == 'C') centro.setMag(.9*mass); // contrae
-			else if(m) centro.setMag(.9*mass);
-			else if(keyCode == 'G')
-			{
-				location.x = mouseX;
-				location.y = mouseY;
-			}
+			//if(keyCode == 'E') centro.setMag(.2); //expande 
+			//else if(keyCode == 'C') centro.setMag(.9*mass); // contrae
+			//else 
+			if(m) centro.setMag(beatMass*mass);
 			else if(!m) centro.setMag(.9);
 			addForce(centro);
 			
