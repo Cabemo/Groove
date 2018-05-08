@@ -108,6 +108,7 @@ if (stage == 1){
             song.pause();
             mouseClick();
             centerWindow();
+            atras.display();
             tracker.display();
             tracker.track();
             stepBack();

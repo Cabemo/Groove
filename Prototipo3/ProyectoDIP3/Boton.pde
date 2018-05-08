@@ -16,10 +16,10 @@ class Boton {
   }
   void display() {
     rectMode(CENTER);
-    fill(c = ((over() ? color(255) : color(255, 100))));
+    fill(c = ((over() ? color(0) : color(255))));
     noStroke();
     rect(x, y, w, h);
-    fill(0);
+    fill(c = ((over() ? color(255) : color(0))));
     textFont(fuente);
     textAlign(CENTER, CENTER);
     textSize(textSize);
