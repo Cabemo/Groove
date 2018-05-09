@@ -6,17 +6,13 @@ import org.openkinect.freenect2.*;
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 import gifAnimation.*;
-String[] backgrounds = {
-          "data/parque.png", 
-          "data/ciudad.png", 
-          "data/espacio.png"};
-PImage b;
+
 //Ruta de las canciones a cargar
 String[] rutaPaquetes =  new String[19];
 
 //Menu de help
 HelpMenu h;
-Boton atras, start, help, play, minus, plus;
+Boton atras, start, help, play;
 PFont mono;
 Gif[] gifs = new Gif[4];
 float tiempo;
@@ -45,7 +41,14 @@ int stage;
 //Font para el texto
 PFont baron, manbow;
 
-void settings() {
+//MouseOver de los botones
+boolean startOver = false;
+boolean helpOver = false;
+boolean clickedStart = false;
+boolean clickedHelp = false;
+boolean clickedAtras = false;
+
+void settings() {  
     for(int i = 0; i < gifs.length; i++) {
         gifs[i] = new Gif(this, "helpImages/"+(i+1)+".gif");
     }
@@ -63,7 +66,6 @@ void settings() {
 void setup(){
 tiempo = 0;
 paquete = (int)random(3);
-
 p1.colorear();
 p1.generarPosiciones(clusters);
 o.colorear(255);
@@ -86,21 +88,21 @@ baron = createFont("Baron Neue.ttf", 1);
 manbow = createFont("manbow tone.ttf", 1);
 start = new Boton(displayWidth/2, displayHeight/2, 180, 80, "START", 25, baron);
 help = new Boton(displayWidth/2, 2*displayHeight/3, 180, 80, "HELP", 25, baron);
-atras = new Boton(displayWidth - 200, 100, 90, 40, "BACK", 15, baron);
-play = new Boton(displayWidth - 300, 100, 90, 40, "PLAY", 15, baron);
-minus = new Boton(displayWidth/2 - 300, height/2, 80, 80, "-", 40, baron);
-plus = new Boton(displayWidth/2 + 300, height/2, 80, 80, "+", 40, baron);
+atras = new Boton(displayWidth - 200, 100, 180, 80, "BACK", 25, baron);}
+play = new Boton(100, height - 100, 180, 80, "PLAY", 25, baron);
+}
 }
 
 void draw(){
+
 if (stage == 1){
-    image(startScreen, 0, 0);
     song.play();
     o.centroG(displayWidth/2 - 50, displayHeight/4 - 50);
-    //tracker.display();
+    tracker.setBackground(3);
+    tracker.display();
+    tracker.track();
     start.display();
     help.display();
-    tracker.track();
     title();
     stepBack();
     o.move();
@@ -108,31 +110,29 @@ if (stage == 1){
         background(0);
         mouseClick();
         centerWindow();
-        //tracker.display();
-        atras.display();
-        minus.display();
-        plus.display();
+        tracker.display();
         tracker.track();
+        atras.display();
         stepBack();
         h.volumen();
         h.backbtn();
-        //h.gifs();
+        h.gifs();
     }  else if (stage == 3) {
             //Juego
-            image(b, 0, 0);
+            tracker.setBackground(paquete);
             song.pause();
             mouseClick();
             centerWindow();
-            //tracker.display();
+            tracker.display();
+            tracker.track();
             atras.display();
             play.display();
-            tracker.track();
             stepBack();
             p1.seleccionados();
             PVector t = tracker.getPos();
              p1.centroG(t.x, t.y);
              p1.move();
-      }
+      }  
       mouseClick();
 }
 void dispose() {
@@ -163,10 +163,10 @@ textAlign(CENTER);
 textFont(manbow);
 textSize(150);
 fill(255);
-text("GR     OVE", displayWidth/2, displayHeight/4);
+text("GR   OVE", displayWidth/2, displayHeight/4);
 }
 void mouseClick(){
-    float tamano = map(tiempo, 0, 700, 0, 75);
+    float tamano = map(tiempo, 0, 590, 0, 75);
     stroke(255);
     noFill();
     strokeWeight(4);
@@ -176,55 +176,44 @@ void mouseClick(){
     ellipse(100, 100, tamano, tamano);
     if (start.over() && stage == 1){
     tiempo += frameRate;
-    if(tiempo >= 700) {
-    b = loadImage(backgrounds[paquete]);
-    b.resize(displayWidth, displayHeight);
-    tiempo = 700;
+    if(tiempo >= 590) {
+    tiempo = 590;
+    //clickedStart = true;
+    //clickedHelp = false;
+    //clickedAtras = false;
     stage = 3;
     }
     }else if(help.over() && stage == 1){
     tiempo += frameRate;
-    if(tiempo >= 700) {
-    tiempo = 700;
+    if(tiempo >= 590) {
+    tiempo = 590;
+    clickedHelp = true;
+    clickedStart = false;
+    clickedAtras = false;
     stage = 2;
     }
     }
     else if(atras.over() && (stage == 3 || stage == 2)) {
-      for(int i = 0; i < p1.seleccionados.length; i++) p1.seleccionados[i] = false;
+      for(int i = 0; i < p1.seleccionados.length; i++) p1.seleccionados[i] = false; 
     tiempo += frameRate;
-    if(tiempo >= 700) {
+    if(tiempo >= 590) {
     paquete = (int)random(3);
     p1.generarPosiciones(clusters);
     p1.colorear();
-    tiempo = 700;
+    tiempo = 590;
+    clickedAtras = true;
+    clickedHelp = false;
+    clickedStart = false;
     stage = 1;
     }
     }
     else if(play.over() && stage == 3) {
-    tiempo += frameRate;
-    if(tiempo >= 700) {
-      tiempo = 0;
-      for(int i = 1; i < p1.seleccionados.length; i++) {
-        if(p1.seleccionados[i]) players[i - 1].loop(1);
-    }
-    }
-    }
-    else if((plus.over() || minus.over()) && stage == 2) {
       tiempo += frameRate;
-      if(tiempo >= 700) {
-      tiempo = 0;
-      if(plus.over()) h.increaseVolume();
-      else h.lowerVolume();
-      for(int i = 0; i < players.length; i++) {
-      players[i].setGain(h.getVolume());
-      song.setGain(h.getVolume());
-      println(h.getVolume());
-      }
+    if(tiempo >= 590) {
+      
+      tiempo = 590;
     }
-    }
-    
     else {
     tiempo = 0;
     }
-    }
-    
+}

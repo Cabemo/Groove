@@ -6,6 +6,8 @@ import org.openkinect.tests.*;
 class SistemaParticulas {
 	Ball[][] sp;
   boolean[] seleccionados;
+  int t;
+  int noSeleccionados;
   float[] tiempo;
 	float[][] posiciones;
 	RutasPaquetes rutas;
@@ -13,12 +15,14 @@ class SistemaParticulas {
   Kinect kinect;
   
 	SistemaParticulas(int size, Kinect kinect) {
-		int numParticulas = 250/size;
+		int numParticulas = 1500/size;
     seleccionados = new boolean[size];
     tiempo = new float[size];
 		sp = new Ball[size][numParticulas];
 		posiciones = new float[size][2];
-    this.kinect = kinect;    
+    this.kinect = kinect; 
+    noSeleccionados = 0;
+    t = 0;
 	}
 	
 	void move() {
@@ -152,50 +156,65 @@ class SistemaParticulas {
   void seleccionados() {
     PVector jugador = tracker.getPos();
     for(int i = 1; i < seleccionados.length; i++) {
-      
+      if(seleccionados[i]) {
+        noSeleccionados++;
+        fill(colores[i], 100);
+        float size = noise(t);
+        size = map(size, 0, 1, displayWidth/40, displayWidth/20);
+        ellipse(posiciones[i][0], posiciones[i][1], size, size);
+      }
       if(jugador.x >= posiciones[i][0] - (displayWidth/40) && jugador.x <= posiciones[i][0] + (displayWidth/40)) {
         if(jugador.y >= posiciones[i][1] - (displayWidth/40) && jugador.y <= posiciones[i][1] + (displayWidth/40)) {
           tiempo[i] += frameRate;
-          noFill();
-          stroke(255);
-          strokeWeight(4);
-          ellipse(100, 100, 100,100);
           fill(255);
-          ellipse(100, 100, map(tiempo[i], 0, 590, 0, 100), map(tiempo[i], 0, 590, 0, 100));
-          if(tiempo[i] >= 590) {
-            tiempo[i] = 590;
-            ellipse(posiciones[i][0], posiciones[i][1], 10, 10);
-            seleccionados[i] = ((seleccionados[i]) ? false : true);
-            if(seleccionados[i]) players[i - 1].loop();
-            else players[i - 1].pause();
+          ellipse(100, 100, map(tiempo[i], 0, 1400, 0, 150), map(tiempo[i], 0, 1400, 0, 150));
+          if(tiempo[i] >= 700) {
+            if(tiempo[i] < 1400) {
+                    players[i - 1].play();
+              
+              if(jugador.x >= posiciones[i][0] - (displayWidth/40) && jugador.x <= posiciones[i][0] + (displayWidth/40)) {
+                if(jugador.y >= posiciones[i][1] - (displayWidth/40) && jugador.y <= posiciones[i][1] + (displayWidth/40)) {
+                  tiempo[i] += frameRate;
+                  noFill();
+                stroke(255);
+                strokeWeight(4);
+                ellipse(100,100,150,150);
+                }
+              }
+              else tiempo[i] = 0;
+            }
+            else if(tiempo[i] >= 1400) {
+                players[i - 1].pause();
+                tiempo[i] = 0;
+                seleccionados[i] = !seleccionados[i];
+            }
           }
         }
       }
       else {
+       if(!players[i - 1].isPlaying()) players[i - 1].rewind();
         tiempo[i] = 0;
-        seleccionados[i] = false;
       }
     }
   }
-	void centroG(boolean azar, int main, float mainX, float mainY) {
-		int x = width/(sp.length + 2);
-		int y = height/8;
-		int contador = 1;
+	void centroG(float mainX, float mainY) {
+		int x = width/2;
+		int y = 2*height/3;
 		
 		 for(int i = 0; i < sp.length; i++) {
 			for(Ball b : sp[i]) {
-					if(main > 0) {
+					if(i == 0) {
 						b.centroG(mainX, mainY, false);
 					}
 					else {
-						if(azar) b.centroG(posiciones[i][0], posiciones[i][1], true);
-						else {
-							b.centroG(x * contador, y * 4, true);
-						}
+            if(seleccionados[i]) {
+                  fill(255);
+                  rect(x, height - width/40, width, height/12);
+                  b.centroG(mainX, mainY, false);
+            }
+            else b.centroG(posiciones[i][0], posiciones[i][1], true); 
+              }
+            }
 					}
 			}
-			contador++;
-			main--;
 		}
-	}
-}

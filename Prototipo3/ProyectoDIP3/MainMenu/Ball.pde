@@ -64,20 +64,16 @@ class Ball
 		{
 			centro = centro.sub(location);
       if(stage == 1) centro.setMag(.98);
-			else if(keyCode == 'E') centro.setMag(.2);
-			else if(keyCode == 'C') centro.setMag(.9*mass);
 			else if(m) centro.setMag(.9*mass);
-			else if(keyCode == 'G')
-			{
-				location.x = mouseX;
-				location.y = mouseY;
-			}
 			else if(!m) centro.setMag(.95);
       addForce(centro);
 		}
 		else
 		{
-			addForce(gravity);
+       centro.x = width/2;
+       centro.y = height/2;
+      if(!m) addForce(centro.sub(location));
+			else addForce(gravity);
 			bounce();
 		}
 	}
