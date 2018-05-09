@@ -169,15 +169,14 @@ class SistemaParticulas {
           tiempo[i] += frameRate;
           fill(255);
           ellipse(100, 100, map(tiempo[i], 0, 1400, 0, 150), map(tiempo[i], 0, 1400, 0, 150));
-          if(tiempo[i] >= 700) {
-            if(tiempo[i] < 1400) {
+          if(tiempo[i] >= 700 && tiempo[i] < 1400) {
+            
                     players[i - 1].play();
                     beatDetectors[i - 1].forward(players[i - 1].mix);
                     float temp = 0;
                     for(int j = 0; j < beatDetectors[i - 1].specSize(); j++) temp += beatDetectors[i - 1].getBand(j);
                     temp /= beatDetectors[i - 1].specSize();
                     fuerzas[i] = temp;
-                    }
               if(jugador.x >= posiciones[i][0] - (displayWidth/40) && jugador.x <= posiciones[i][0] + (displayWidth/40)) {
                 if(jugador.y >= posiciones[i][1] - (displayWidth/40) && jugador.y <= posiciones[i][1] + (displayWidth/40)) {
                   tiempo[i] += frameRate;
