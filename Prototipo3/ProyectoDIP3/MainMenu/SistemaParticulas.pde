@@ -122,6 +122,7 @@ class SistemaParticulas {
         }
       }
     color c;
+    println(sp.length);
 		for(int i = 0; i < sp.length; i++) {
       if(i == 0) c = #FFFFFF;
 			else c = colores[i];

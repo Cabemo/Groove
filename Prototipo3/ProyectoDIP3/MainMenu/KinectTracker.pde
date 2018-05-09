@@ -55,7 +55,7 @@ sumX += x; sumY += y; count++;
 // As long as we found something
 if (count != 0) { 
 loc = new PVector(widthRelation*sumX/count,heightRelation*sumY/count);
-if(paquete == 0) fill(0);
+if(paquete == 0 && stage == 3) fill(0);
 else fill(255);
 t+=.2;
 float size = noise(t);
