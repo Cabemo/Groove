@@ -250,35 +250,36 @@ class RutasPaquetes
 	color[] parqueZeroOneNF()
 	{
 		//01_95 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq0195[i];
 
 			if(paq0195[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano95.length);
-				cc[i] = parquePiano95[crazyNumber];
+				cc[i + 1] = parquePiano95[crazyNumber];
 			}
 			else if(paq0195[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq0195[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq0195[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats95.length);
-				cc[i] = parqueBeats95[crazyNumber];
+				cc[i + 1] = parqueBeats95[crazyNumber];
 			}
 		}
 		return cc;
@@ -287,35 +288,36 @@ class RutasPaquetes
 	color[] parqueZeroOneT()
 	{
 		//01_110 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01110[i];
 
 			if(paq01110[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano110.length);
-				cc[i] = parquePiano110[crazyNumber];
+				cc[i + 1] = parquePiano110[crazyNumber];
 			}
 			else if(paq01110[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq01110[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq01110[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats110.length);
-				cc[i] = parqueBeats110[crazyNumber];
+				cc[i + 1] = parqueBeats110[crazyNumber];
 			}
 		}
 		return cc;
@@ -324,35 +326,36 @@ class RutasPaquetes
 	color[] parqueZeroOneTw()
 	{
 		//01_120 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01120[i];
 
 			if(paq01120[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano120.length);
-				cc[i] = parquePiano120[crazyNumber];
+				cc[i + 1] = parquePiano120[crazyNumber];
 			}
 			else if(paq01120[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq01120[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq01120[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats120.length);
-				cc[i] = parqueBeats120[crazyNumber];
+				cc[i + 1] = parqueBeats120[crazyNumber];
 			}
 		}
 		return cc;
@@ -361,35 +364,36 @@ class RutasPaquetes
 	color[] parqueZeroTwoNF()
 	{
 		//02_95 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq0295[i];
 
 			if(paq0295[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano95.length);
-				cc[i] = parquePiano95[crazyNumber];
+				cc[i + 1] = parquePiano95[crazyNumber];
 			}
 			else if(paq0295[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq0295[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq0295[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats295.length);
-				cc[i] = parqueBeats295[crazyNumber];
+				cc[i + 1] = parqueBeats295[crazyNumber];
 			}
 		}
 		return cc;
@@ -398,35 +402,36 @@ class RutasPaquetes
 	color[] parqueZeroTwoT()
 	{
 		//02_110 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02110[i];
 
 			if(paq02110[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano95.length);
-				cc[i] = parquePiano95[crazyNumber];
+				cc[i + 1] = parquePiano95[crazyNumber];
 			}
 			else if(paq02110[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq02110[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq02110[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats2110.length);
-				cc[i] = parqueBeats2110[crazyNumber];
+				cc[i + 1] = parqueBeats2110[crazyNumber];
 			}
 		}
 		return cc;
@@ -435,35 +440,36 @@ class RutasPaquetes
 	color[] parqueZeroTwoTw()
 	{
 		//02_120 - Parque
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02120[i];
 
 			if(paq02120[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(parquePiano95.length);
-				cc[i] = parquePiano95[crazyNumber];
+				cc[i + 1] = parquePiano95[crazyNumber];
 			}
 			else if(paq02120[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(parqueGuitarra.length);
-				cc[i] = parqueGuitarra[crazyNumber];
+				cc[i + 1] = parqueGuitarra[crazyNumber];
 			}
 			else if(paq02120[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(parqueOrgano.length);
-				cc[i] = parqueOrgano[crazyNumber];
+				cc[i + 1] = parqueOrgano[crazyNumber];
 			}
 			else if(paq02120[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(parqueBass.length);
-				cc[i] = parqueBass[crazyNumber];
+				cc[i + 1] = parqueBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(parqueBeats2120.length);
-				cc[i] = parqueBeats2120[crazyNumber];
+				cc[i + 1] = parqueBeats2120[crazyNumber];
 			}
 		}
 		return cc;
@@ -472,35 +478,36 @@ class RutasPaquetes
 	color[] ciudadZeroOneNF()
 	{
 		//01_95 - Ciudad
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq0195[i];
 
 			if(paq0195[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(ciudadPiano952.length);
-				cc[i] = ciudadPiano952[crazyNumber];
+				cc[i + 1] = ciudadPiano952[crazyNumber];
 			}
 			else if(paq0195[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(ciudadGuitarra.length);
-				cc[i] = ciudadGuitarra[crazyNumber];
+				cc[i + 1] = ciudadGuitarra[crazyNumber];
 			}
 			else if(paq0195[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(ciudadOrgano.length);
-				cc[i] = ciudadOrgano[crazyNumber];
+				cc[i + 1] = ciudadOrgano[crazyNumber];
 			}
 			else if(paq0195[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(ciudadBass.length);
-				cc[i] = ciudadBass[crazyNumber];
+				cc[i + 1] = ciudadBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(ciudadBeats952.length);
-				cc[i] = ciudadBeats952[crazyNumber];
+				cc[i + 1] = ciudadBeats952[crazyNumber];
 			}
 		}
 		return cc;
@@ -509,35 +516,36 @@ class RutasPaquetes
 	color[] ciudadZeroTwoNF()
 	{
 		//02_95 - Ciudad
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq0295[i];
 
 			if(paq0295[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(ciudadPiano952.length);
-				cc[i] = ciudadPiano952[crazyNumber];
+				cc[i + 1] = ciudadPiano952[crazyNumber];
 			}
 			else if(paq0295[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(ciudadGuitarra.length);
-				cc[i] = ciudadGuitarra[crazyNumber];
+				cc[i + 1] = ciudadGuitarra[crazyNumber];
 			}
 			else if(paq0295[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(ciudadOrgano.length);
-				cc[i] = ciudadOrgano[crazyNumber];
+				cc[i + 1] = ciudadOrgano[crazyNumber];
 			}
 			else if(paq0295[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(ciudadBass.length);
-				cc[i] = ciudadBass[crazyNumber];
+				cc[i + 1] = ciudadBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(ciudadBeats952.length);
-				cc[i] = ciudadBeats952[crazyNumber];
+				cc[i + 1] = ciudadBeats952[crazyNumber];
 			}
 		}
 		return cc;
@@ -546,35 +554,36 @@ class RutasPaquetes
 	color[] ciudadZeroOneTh()
 	{
 		//01_130 - Ciudad
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01130[i];
 
 			if(paq01130[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(ciudadPiano1302.length);
-				cc[i] = ciudadPiano1302[crazyNumber];
+				cc[i + 1] = ciudadPiano1302[crazyNumber];
 			}
 			else if(paq01130[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(ciudadGuitarra.length);
-				cc[i] = ciudadGuitarra[crazyNumber];
+				cc[i + 1] = ciudadGuitarra[crazyNumber];
 			}
 			else if(paq01130[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(ciudadOrgano.length);
-				cc[i] = ciudadOrgano[crazyNumber];
+				cc[i + 1] = ciudadOrgano[crazyNumber];
 			}
 			else if(paq01130[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(ciudadBass.length);
-				cc[i] = ciudadBass[crazyNumber];
+				cc[i + 1] = ciudadBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(ciudadBeats1302.length);
-				cc[i] = ciudadBeats1302[crazyNumber];
+				cc[i + 1] = ciudadBeats1302[crazyNumber];
 			}
 		}
 		return cc;
@@ -583,35 +592,36 @@ class RutasPaquetes
 	color[] ciudadZeroTwoTh()
 	{
 		//02_130 - Ciudad
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02130[i];
 
 			if(paq02130[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(ciudadPiano1302.length);
-				cc[i] = ciudadPiano1302[crazyNumber];
+				cc[i + 1] = ciudadPiano1302[crazyNumber];
 			}
 			else if(paq02130[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(ciudadGuitarra.length);
-				cc[i] = ciudadGuitarra[crazyNumber];
+				cc[i + 1] = ciudadGuitarra[crazyNumber];
 			}
 			else if(paq02130[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(ciudadOrgano.length);
-				cc[i] = ciudadOrgano[crazyNumber];
+				cc[i + 1] = ciudadOrgano[crazyNumber];
 			}
 			else if(paq02130[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(ciudadBass.length);
-				cc[i] = ciudadBass[crazyNumber];
+				cc[i + 1] = ciudadBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(ciudadBeats130.length);
-				cc[i] = ciudadBeats130[crazyNumber];
+				cc[i + 1] = ciudadBeats130[crazyNumber];
 			}
 		}
 		return cc;
@@ -620,35 +630,36 @@ class RutasPaquetes
 	color[] espacioZeroOneT()
 	{
 		//01_110 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01110[i];
 
 			if(paq01110[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano1.length);
-				cc[i] = galaxiaPiano1[crazyNumber];
+				cc[i + 1] = galaxiaPiano1[crazyNumber];
 			}
 			else if(paq01110[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq01110[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq01110[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats1102.length);
-				cc[i] = galaxiaBeats1102[crazyNumber];
+				cc[i + 1] = galaxiaBeats1102[crazyNumber];
 			}
 		}
 		return cc;
@@ -657,35 +668,36 @@ class RutasPaquetes
 	color[] espacioZeroOneTw()
 	{
 		//01_120 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01120[i];
 
 			if(paq01120[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano1.length);
-				cc[i] = galaxiaPiano1[crazyNumber];
+				cc[i + 1] = galaxiaPiano1[crazyNumber];
 			}
 			else if(paq01120[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq01120[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq01120[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats1202.length);
-				cc[i] = galaxiaBeats1202[crazyNumber];
+				cc[i + 1] = galaxiaBeats1202[crazyNumber];
 			}
 		}
 		return cc;
@@ -694,35 +706,36 @@ class RutasPaquetes
 	color[] espacioZeroOneTh()
 	{
 		//01_130 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq01130[i];
 
 			if(paq01130[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano1.length);
-				cc[i] = galaxiaPiano1[crazyNumber];
+				cc[i + 1] = galaxiaPiano1[crazyNumber];
 			}
 			else if(paq01130[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq01130[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq01130[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats130.length);
-				cc[i] = galaxiaBeats130[crazyNumber];
+				cc[i + 1] = galaxiaBeats130[crazyNumber];
 			}
 		}
 		return cc;
@@ -731,35 +744,36 @@ class RutasPaquetes
 	color[] espacioZeroTwoT()
 	{
 		//02_110 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02110[i];
 
 			if(paq02110[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano2.length);
-				cc[i] = galaxiaPiano2[crazyNumber];
+				cc[i + 1] = galaxiaPiano2[crazyNumber];
 			}
 			else if(paq02110[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq02110[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq02110[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats1102.length);
-				cc[i] = galaxiaBeats1102[crazyNumber];
+				cc[i + 1] = galaxiaBeats1102[crazyNumber];
 			}
 		}
 		return cc;
@@ -768,35 +782,36 @@ class RutasPaquetes
 	color[] espacioZeroTwoTw()
 	{
 		//02_120 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02120[i];
 
 			if(paq02120[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano2.length);
-				cc[i] = galaxiaPiano2[crazyNumber];
+				cc[i + 1] = galaxiaPiano2[crazyNumber];
 			}
 			else if(paq02120[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq02120[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq02120[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats1202.length);
-				cc[i] = galaxiaBeats1202[crazyNumber];
+				cc[i + 1] = galaxiaBeats1202[crazyNumber];
 			}
 		}
 		return cc;
@@ -805,35 +820,36 @@ class RutasPaquetes
 	color[] espacioZeroTwoTh()
 	{
 		//02_130 - espacio
-		color[] cc = new color[clusters - 1];
-		for(int i = 0; i < clusters - 1; i++)
+		color[] cc = new color[clusters];
+		cc[0] = color(255);
+		for(int i = 0; i < 19; i++)
 		{
 			rutaPaquetes[i] = paq02130[i];
 
 			if(paq02130[i].contains("Piano"))
 			{
 				crazyNumber = (int)random(galaxiaPiano2.length);
-				cc[i] = galaxiaPiano2[crazyNumber];
+				cc[i + 1] = galaxiaPiano2[crazyNumber];
 			}
 			else if(paq02130[i].contains("Guitar"))
 			{
 				crazyNumber = (int)random(galaxiaGuitarra.length);
-				cc[i] = galaxiaGuitarra[crazyNumber];
+				cc[i + 1] = galaxiaGuitarra[crazyNumber];
 			}
 			else if(paq02130[i].contains("Organ"))
 			{
 				crazyNumber = (int)random(galaxiaOrgano.length);
-				cc[i] = galaxiaOrgano[crazyNumber];
+				cc[i + 1] = galaxiaOrgano[crazyNumber];
 			}
 			else if(paq02130[i].contains("Bass"))
 			{
 				crazyNumber = (int)random(galaxiaBass.length);
-				cc[i] = galaxiaBass[crazyNumber];
+				cc[i + 1] = galaxiaBass[crazyNumber];
 			}
 			else{
 				//beats
 				crazyNumber = (int)random(galaxiaBeats130.length);
-				cc[i] = galaxiaBeats130[crazyNumber];
+				cc[i + 1] = galaxiaBeats130[crazyNumber];
 			}
 		}
 		return cc;
