@@ -1,8 +1,8 @@
 class HelpMenu
 {
 	PVector position;
-	float currentVolume;
-	float size;
+  int volume;
+	int size;
 	Gif[] gifs;
 	
 	HelpMenu(Gif[] gifs)
@@ -11,7 +11,7 @@ class HelpMenu
 		position = new PVector(displayWidth/2, displayHeight/2);
 		// volumen inicial de 0 a 100
 		size = displayWidth/8; //100%
-		currentVolume = size*.8; //80%
+		volume = -8;
 
 		this.gifs = gifs;
 		for(int i = 0; i < gifs.length; i++)
@@ -32,12 +32,8 @@ class HelpMenu
 		//volumen real
 		noStroke();
 		fill(255);
-		ellipse(position.x, position.y, currentVolume, currentVolume);
-
-		//
-		currentVolume = map(mouseX, 0, displayWidth, 0, size);
-
-		//constrain(currentVolume, 0, size);
+    
+		ellipse(position.x, position.y, map(volume, -40, -8, 0, size), map(volume, -40, -8, 0, size));
 	}
 
 	void backbtn()
@@ -57,8 +53,16 @@ class HelpMenu
 		}
 	}
 
-	float getVolume()
+	int getVolume()
 	{
-		return currentVolume;
+    if(volume > -8) volume = -8;
+    else if(volume < -40) volume = -40;
+		return volume;
 	}
+  void lowerVolume() {
+    volume -= 1;
+  }
+  void increaseVolume() {
+   volume += 1;
+  }
 }

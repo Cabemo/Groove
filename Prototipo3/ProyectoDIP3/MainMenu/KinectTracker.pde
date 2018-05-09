@@ -3,23 +3,19 @@ import org.openkinect.freenect2.*;
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 
-class KinectTracker { 
+class KinectTracker {
+float t = 0;
 // Size of kinect 
 int kw = 640;
 int kh = 480; 
 // this is the depth range, distance past which we will ignore all pixels 
-int threshold= 500;
+int threshold= 700;
 // Raw location 
 PVector loc; 
 // Interpolated location
 PVector lerpedLoc;
 // Depth data 
 int[] depth; 
-PImage[] backgrounds = {
-  loadImage("data/parque.png"), 
-  loadImage("data/ciudad.png"), 
-  loadImage("data/espacio.png"),
-  loadImage("data/start.png")};
 PImage display, background;
 float count;
 float widthRelation, heightRelation;
@@ -31,15 +27,10 @@ KinectTracker() {
   loc = new PVector(0,0);
   lerpedLoc = new PVector(0,0);
   //DISEÑO
-  background = backgrounds[paquete];
-  background.resize(width, height);
+ 
   display = createImage(width, height, RGB);
   widthRelation = width/640;
   heightRelation = height/480;
-}
-void setBackground(int indice) {
-  background = backgrounds[indice];
-  background.resize(width, height);
 }
 void track() { 
 // Get the raw depth as array of integers
@@ -64,8 +55,12 @@ sumX += x; sumY += y; count++;
 // As long as we found something
 if (count != 0) { 
 loc = new PVector(widthRelation*sumX/count,heightRelation*sumY/count);
-fill(0);
-ellipse(loc.x, loc.y, 10, 10);
+if(paquete == 0) fill(0);
+else fill(255);
+t+=.2;
+float size = noise(t);
+size = map(size, 0, 1, 15, 45);
+rect(loc.x, loc.y, size, size);
 } 
 // Interpolating the location, doing it arbitrarily for now 
 lerpedLoc.x = PApplet.lerp(lerpedLoc.x, loc.x, 0.1); 
