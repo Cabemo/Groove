@@ -35,7 +35,7 @@ KinectTracker tracker;
 //MUSICA
 Minim minim;
 AudioPlayer[] players;
-BeatDetect beat;
+FFT[] beatDetectors;
 float[] fuerzas;
 AudioPlayer song;
 AudioInput input;
@@ -73,10 +73,12 @@ minim = new Minim(this);
 song = minim.loadFile("Soulful.mp3");
 players = new AudioPlayer[clusters - 1];
 fuerzas = new float[clusters];
+beatDetectors = new FFT[clusters - 1];
 fuerzas[fuerzas.length - 1] = 0.9;
 for(int i = 0; i < players.length; i++) {
   fuerzas[i] = 0.9;
   players[i] = minim.loadFile(rutaPaquetes[i], 2048);
+  beatDetectors[i] = new FFT(players[i].bufferSize(), players[i].sampleRate());
 }
 //cual stage es el que activara
 stage = 1;
