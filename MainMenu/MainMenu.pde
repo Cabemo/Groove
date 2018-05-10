@@ -15,7 +15,8 @@ PImage b;
 String[] rutaPaquetes =  new String[19];
 
 //Menu de help
-HelpMenu h;
+SettingMenu h;
+HelpMenu s;
 Boton atras, start, help, play, minus, plus;
 PFont mono;
 int limInferior, limSuperior;
@@ -52,7 +53,8 @@ void settings() {
     }
     limInferior = 2000;
     limSuperior = 4000;
-    h = new HelpMenu(gifs);
+    h = new SettingMenu();
+    s = new HelpMenu(gifs);
     size(displayWidth, displayHeight);//necesario para kinect no cambiar!
     margenDerecho = floor((width-width/10));
     margenIzquierdo = floor((width/10));
