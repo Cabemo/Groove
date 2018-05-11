@@ -30,7 +30,7 @@ class Ball
 		velocity.x = constrain(velocity.x,-5,5);
 		velocity.y = constrain(velocity.y,-5,5);
 		acceleration.mult(0);
-		 
+
 	}
 
 	void bounce()
@@ -68,7 +68,7 @@ class Ball
 		gravity = new PVector(0,.2);
 		gravity.mult(mass);
 		//Let's add gravity and friction
-    
+
     if(tracker.count != 0 || stage == 1) //&& (mouseY > margenTop))
 		{
 			centro = centro.sub(location);
@@ -81,6 +81,7 @@ class Ball
 		{
        centro.x = width/2;
        centro.y = height/2;
+	   centro.setMag(fuerza);
       if(!m) addForce(centro.sub(location));
 			else addForce(gravity);
 			bounce();
