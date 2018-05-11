@@ -25,7 +25,7 @@ boolean centered;//-------------------------------------------------------------
 
 //ESTILO
 Boton atras, start, help, play, minus, plus, settings;
-Gif[] gifs = new Gif[4];
+Gif[] gifs = new Gif[3];
 PImage startScreen;//----------------------------------------------------------- Contiene imagen de inicio
 PFont baron, manbow;//---------------------------------------------------------- Estilos de texto para título y botones
 float margenDerecho;//---------------------------------------------------------- Describe el limite a la derecha
@@ -65,9 +65,9 @@ void setup() {
     play = new Boton(displayWidth - 300, 50, 90, 45, "PLAY", 20, baron);
     minus = new Boton(displayWidth / 2 - 300, height / 2, 80, 80, "-", 40, baron);
     plus = new Boton(displayWidth / 2 + 300, height / 2, 80, 80, "+", 40, baron);
-    for (int i = 0; i < gifs.length; i++) {
-        gifs[i] = new Gif(this, "helpImages/" + (i + 1) + ".gif");
-    }
+     for (int i = 0; i < gifs.length; i++) {
+         gifs[i] = new Gif(this, "helpImages/" + (i + 1) + ".gif");
+     }
 
     //FUNCIONAMIENTO
     rutaPaquetes = new String[19];
@@ -86,7 +86,7 @@ void setup() {
     h = new HelpMenu(gifs);
 
     //GENERAL
-    stage = 1;
+    stage = 4;
     paquete = (int) random(3);
     centered = false;
 
@@ -109,39 +109,36 @@ void draw() {
     centerWindow();
     if (stage == 1) {//--------------------------------------------------------- Pantalla de inicio
         image(startScreen, 0, 0);
+        title("GR     OVE");
         song.play();
         o.centroG(displayWidth / 2 - 50, displayHeight / 4 - 50);
         start.display(jugador);
         settings.display(jugador);
         help.display(jugador);
-        tracker.track();
-        title("GR     OVE");
-        stepBack();
         o.move();
     } else if (stage == 2) {//-------------------------------------------------- Pantalla de settings
         background(0);
+        title("SETTINGS");
         atras.display(jugador);
         minus.display(jugador);
         plus.display(jugador);
-        tracker.track();
-        stepBack();
         s.volumen();
     } else if (stage == 3) {//-------------------------------------------------- Pantalla de juego
         image(b, 0, 0);
         song.pause();
         atras.display(jugador);
         play.display(jugador);
-        tracker.track();
-        stepBack();
         p1.seleccionados();
         p1.centroG(jugador.x, jugador.y);
         p1.move();
     } else if (stage == 4) {
         background(0);
+        title("HELP");
         atras.display(jugador);
-        tracker.track();
         h.gifs();
       }
+    tracker.track();
+    stepBack();
     mouseClick(jugador);
 }
 /*****************CONTROL DE APAGADO DE SENSOR INFRARROJO KINECT***************/
@@ -209,6 +206,7 @@ void mouseClick(PVector jugador) {
     } else if (atras.over(jugador) && stage != 1) {
         tiempo += frameRate;
         if (tiempo >= limInferior) {
+            imageMode(CORNER);
             paquete = (int) random(3);
             p1.generarPosiciones(clusters);
             p1.colorear();
