@@ -13,7 +13,9 @@ class HelpMenu
 
 	void gifs(int indice)
 	{
+		imageMode(CENTER);
 		image(gifs[indice], width / 2, height / 2);
+		imageMode(CORNER);
 	}
 	void gifs() {
 		imageMode(CENTER);
