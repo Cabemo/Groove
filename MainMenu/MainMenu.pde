@@ -6,6 +6,8 @@ import org.openkinect.freenect2.*;
 import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 import gifAnimation.*;
+/***************************ACTIVAR Y DESACTIVAR TUTORIAL*********************/
+boolean tutorial = false;
 
 //FUNCIONAMIENTO
 String[] rutaPaquetes;//-------------------------------------------------------- Contiene rutas de los contenidos de cada paquete (colores y música)
@@ -22,12 +24,12 @@ HelpMenu h;//-------------------------------------------------------------------
 int stage;//-------------------------------------------------------------------- Contiene el índice de la pantalla en la que se encuentra
 int paquete;//------------------------------------------------------------------ Contiene el paquete que será utilizado (fondo, instrumentos, colores)
 boolean centered;//------------------------------------------------------------- Informa si la pantalla se encuentra centrada para centrarla si no es así
-boolean tutorial[];//----------------------------------------------------------- Determina que parte ya fue pasada para el tutorial
+boolean tutoriales[];//----------------------------------------------------------- Determina que parte ya fue pasada para el tutoriales
 
 
 //ESTILO
 Boton atras, start, help, play, minus, plus, settings, yes, no, ok;//--------------- Botones
-Gif[] gifs = new Gif[3];//------------------------------------------------------ Gifs de tutorial
+Gif[] gifs = new Gif[3];//------------------------------------------------------ Gifs de tutoriales
 PImage startScreen;//----------------------------------------------------------- Contiene imagen de inicio
 PFont baron, manbow;//---------------------------------------------------------- Estilos de texto para título y botones
 float margenDerecho;//---------------------------------------------------------- Describe el limite a la derecha
@@ -62,8 +64,6 @@ void setup() {
     margenDerecho = floor((width - width / 10));
     margenIzquierdo = floor((width / 10));
     start = new Boton(displayWidth / 4, 11 * displayHeight / 19, 180, 80, "START", 25, baron);
-    yes = new Boton(displayWidth / 4, 11 * displayHeight / 19, 180, 80, "Yes", 25, baron);
-    no = new Boton(3 * displayWidth / 4, 11 * displayHeight / 19, 180, 80, "No", 25, baron);
     ok = new Boton(displayWidth / 2, displayHeight - 150, 180, 80, "Ok", 25, baron);
     settings = new Boton(displayWidth / 2, 11 * displayHeight / 19, 180, 80, "SETTINGS", 25, baron);
     help = new Boton(3 * displayWidth / 4, 11 * displayHeight / 19, 180, 80, "HELP", 25, baron);
@@ -92,11 +92,11 @@ void setup() {
     h = new HelpMenu(gifs);
 
     //GENERAL
-    stage = 4;
+    stage = ((tutorial) ? 4 : 1);
     paquete = (int) random(3);
     centered = false;
-    tutorial = new boolean[3];
-    for(int i = 0; i < tutorial.length; i++) tutorial[i] = true;
+    tutoriales = new boolean[3];
+    for(int i = 0; i < tutoriales.length; i++) tutoriales[i] = tutorial;
 
     //MUSICA
     minim = new Minim(this);
@@ -114,11 +114,11 @@ void setup() {
 }
 
 void draw() {
-    if (frameCount == 1) songloop.loop();
+    if (frameCount == 1 && tutorial) songloop.loop();
     jugador = tracker.getPos();
     centerWindow();
     if (stage == 1) {//--------------------------------------------------------- Pantalla de inicio
-        if(tutorial[0]) {
+        if(tutoriales[0]) {
             background(0);
             title("Triggering buttons", baron);
             h.gifs(0);
@@ -141,12 +141,12 @@ void draw() {
         plus.display(jugador);
         s.volumen();
     } else if (stage == 3) {//-------------------------------------------------- Pantalla de juego
-        if (tutorial[1]) {
+        if (tutoriales[1]) {
             background(0);
             title("Trying out the sounds", baron);
             h.gifs(1);
             ok.display(jugador);
-        } else if (tutorial[2]) {
+        } else if (tutoriales[2]) {
             background(0);
             title("Select and Play!", baron);
             h.gifs(2);
@@ -162,7 +162,7 @@ void draw() {
         }
     } else if (stage == 4) {
         background(0);
-        if (!(tutorial[0] && tutorial[1] && tutorial[2])) {
+        if (!(tutoriales[0] && tutoriales[1] && tutoriales[2])) {
             title("HELP", manbow);
             atras.display(jugador);
         } else {
@@ -217,7 +217,7 @@ void mouseClick(PVector jugador) {
     noStroke();
     ellipse(100, 100, tamano, tamano);
     if(stage == 4) {
-        if (!(tutorial[0] && tutorial[1] && tutorial[2])) {
+        if (!(tutoriales[0] && tutoriales[1] && tutoriales[2])) {
             if(atras.over(jugador)) {
                 tiempo += frameRate;
                 if (tiempo >= limInferior) {
@@ -232,7 +232,7 @@ void mouseClick(PVector jugador) {
                 stage = 1;
             }
         }
-    } else if (stage == 1 && start.over(jugador) && !tutorial[0]) {
+    } else if (stage == 1 && start.over(jugador) && !tutoriales[0]) {
         tiempo += frameRate;
         if (tiempo >= limInferior) {
             b = loadImage(backgrounds[paquete]);
@@ -246,30 +246,29 @@ void mouseClick(PVector jugador) {
             tiempo = 0;
             stage = 2;
         }
-    } else if (help.over(jugador) && stage == 1 && !(tutorial[1] || tutorial[2])) {
+    } else if (help.over(jugador) && stage == 1 && !(tutoriales[1] || tutoriales[2])) {
         tiempo += frameRate;
         if (tiempo >= limInferior) {
-            tiempo = limInferior;
+            tiempo = 0;
             stage = 4;
         }
-    } else if(tutorial[0] || tutorial[1] || tutorial[2]) {
+    } else if(tutoriales[0] || tutoriales[1] || tutoriales[2]) {
         int s = 0;
-        for(int i = 0; i < tutorial.length; i++) {
+        for(int i = 0; i < tutoriales.length; i++) {
             s = 2 * i + 1;
             if(i == 2) s = 3;
-            if(ok.over(jugador) && tutorial[i] && stage == s) {
+            if(ok.over(jugador) && tutoriales[i] && stage == s) {
                 tiempo += frameRate;
                 if(tiempo >= limInferior) {
                     if (s == 1) songloop.pause();
                     tiempo = 0;
-                    tutorial[i] = false;
+                    tutoriales[i] = false;
                 }
             }
         }
     } else if (atras.over(jugador) && (stage == 2 || stage == 3)) {
         tiempo += frameRate;
         if (tiempo >= limInferior) {
-            imageMode(CORNER);
             paquete = (int) random(3);
             p1.generarPosiciones(clusters);
             p1.colorear();

@@ -22,5 +22,6 @@ class HelpMenu
 		image(gifs[0], width / 4 - 100, 11 * height / 19, 600, 360);
 		image(gifs[1], width / 2, 11 * height / 19, 600, 360);
 		image(gifs[2], 3 * width / 4 + 100, 11 * height / 19, 600, 360);
+		imageMode(CORNER);
 	}
 }
