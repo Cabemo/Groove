@@ -24,8 +24,8 @@ int paquete;//------------------------------------------------------------------
 boolean centered;//------------------------------------------------------------- Informa si la pantalla se encuentra centrada para centrarla si no es así
 
 //ESTILO
-Boton atras, start, help, play, minus, plus, settings;
-Gif[] gifs = new Gif[3];
+Boton atras, start, help, play, minus, plus, settings, yes, no, ok;//--------------- Botones
+Gif[] gifs = new Gif[3];//------------------------------------------------------ Gifs de tutorial
 PImage startScreen;//----------------------------------------------------------- Contiene imagen de inicio
 PFont baron, manbow;//---------------------------------------------------------- Estilos de texto para título y botones
 float margenDerecho;//---------------------------------------------------------- Describe el limite a la derecha
@@ -59,6 +59,9 @@ void setup() {
     margenDerecho = floor((width - width / 10));
     margenIzquierdo = floor((width / 10));
     start = new Boton(displayWidth / 4, 11 * displayHeight / 19, 180, 80, "START", 25, baron);
+    yes = new Boton(displayWidth / 4, 11 * displayHeight / 19, 180, 80, "Yes", 25, baron);
+    no = new Boton(3 * displayWidth / 4, 11 * displayHeight / 19, 180, 80, "No", 25, baron);
+    ok = new Boton(displayWidth / 2, displayHeight / 2, 180, 80, "Ok", 25, baron);
     settings = new Boton(displayWidth / 2, 11 * displayHeight / 19, 180, 80, "SETTINGS", 25, baron);
     help = new Boton(3 * displayWidth / 4, 11 * displayHeight / 19, 180, 80, "HELP", 25, baron);
     atras = new Boton(displayWidth - 200, 50, 90, 45, "BACK", 20, baron);
@@ -115,6 +118,7 @@ void draw() {
         start.display(jugador);
         settings.display(jugador);
         help.display(jugador);
+        if(tutorial) h.gif(0);
         o.move();
     } else if (stage == 2) {//-------------------------------------------------- Pantalla de settings
         background(0);
@@ -133,9 +137,9 @@ void draw() {
         p1.move();
     } else if (stage == 4) {
         background(0);
-        title("HELP");
-        atras.display(jugador);
-        h.gifs();
+        title("Tutorial");
+        yes.display(jugador);
+        no.display(jugador);
       }
     tracker.track();
     stepBack();
@@ -183,13 +187,32 @@ void mouseClick(PVector jugador) {
     fill(255);
     noStroke();
     ellipse(100, 100, tamano, tamano);
-    if (start.over(jugador) && stage == 1) {
-        tiempo += frameRate;
-        if (tiempo >= limInferior) {
-            b = loadImage(backgrounds[paquete]);
-            b.resize(displayWidth, displayHeight);
-            tiempo = limInferior;
-            stage = 3;
+    if (stage == 1) {
+        if(tutorial) {
+
+        } else {
+
+            tiempo += frameRate;
+            if (tiempo >= limInferior) {
+                b = loadImage(backgrounds[paquete]);
+                b.resize(displayWidth, displayHeight);
+                tiempo = limInferior;
+                stage = 3;
+            }
+        }      
+    } else if(stage == 4) {
+        if(yes.over(jugador)) {
+            tiempo += frameRate;
+            if(tiempo >= limInferior) {
+                tutorial = true;
+                stage = 1;
+            }
+        } else if(no.over(jugador)) {
+            tiempo += frameRate;
+            if(tiempo >= limInferior) {
+                tutorial = false;
+                stage = 1;
+            }
         }
     } else if (settings.over(jugador) && stage == 1) {
         tiempo += frameRate;
@@ -203,7 +226,7 @@ void mouseClick(PVector jugador) {
             tiempo = limInferior;
             stage = 4;
         }
-    } else if (atras.over(jugador) && stage != 1) {
+    } else if (atras.over(jugador) && (stage == 2 || stage == 3)) {
         tiempo += frameRate;
         if (tiempo >= limInferior) {
             imageMode(CORNER);
