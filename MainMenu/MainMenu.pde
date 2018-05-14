@@ -7,7 +7,7 @@ import org.openkinect.processing.*;
 import org.openkinect.tests.*;
 import gifAnimation.*;
 /***************************ACTIVAR Y DESACTIVAR TUTORIAL*********************/
-boolean tutorial = false;
+boolean tutorial = true;
 
 //FUNCIONAMIENTO
 String[] rutaPaquetes;//-------------------------------------------------------- Contiene rutas de los contenidos de cada paquete (colores y música)
