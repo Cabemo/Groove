@@ -115,7 +115,8 @@ void setup() {
 
 void draw() {
     if (frameCount == 1 && tutorial) songloop.loop();
-    jugador = tracker.getPos();
+    jugador = new PVector(mouseX, mouseY);
+    noCursor();
     centerWindow();
     if (stage == 1) {//--------------------------------------------------------- Pantalla de inicio
         if(tutoriales[0]) {
@@ -176,7 +177,10 @@ void draw() {
 }
 /*****************CONTROL DE APAGADO DE SENSOR INFRARROJO KINECT***************/
 void dispose() {
-    kinect.stopDepth();
+    if(Kinect.countDevices() != 0) kinect.stopDepth();
+    song.pause();
+    songloop.pause();
+    for(int i = 0; i < players.length; i++) players[i].pause();
 }
 /********************CONTROL DE CENTRADO DE VENTANA****************************/
 void centerWindow() {
@@ -187,6 +191,17 @@ void centerWindow() {
 }
 /********************CONTROL DE POSICIONAMIENTO DE JUGADOR*********************/
 void stepBack() {
+    if(kinect.numDevices() == 0) {
+        if(frameCount < 50) {
+            background(255, map(tracker.getCount(), 30000, 100000, 255, 0));
+            fill(0);
+            textAlign(CENTER);
+            textFont(baron);
+            textSize(75);
+            text("No kinects connected, using mouse", width / 2, height / 2);
+        }
+        return;
+    };
     if (tracker.getCount() > 30000) {
         tracker.loc = new PVector(0, 0);
         background(255, map(tracker.getCount(), 30000, 100000, 255, 0));
@@ -195,7 +210,6 @@ void stepBack() {
         textFont(baron);
         textSize(150);
         text("Step back!", width / 2, height / 2);
-
     }
 }
 /*******************************CREA TITULO************************************/
@@ -260,7 +274,7 @@ void mouseClick(PVector jugador) {
             if(ok.over(jugador) && tutoriales[i] && stage == s) {
                 tiempo += frameRate;
                 if(tiempo >= limInferior) {
-                    if (s == 1) songloop.pause();
+                    songloop.pause();
                     tiempo = 0;
                     tutoriales[i] = false;
                 }

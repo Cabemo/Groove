@@ -63,6 +63,10 @@ class KinectTracker {
             t += .2;
             float size = noise(t);
             size = map(size, 0, 1, 15, 45);
+            if(kinect.numDevices() == 0) {
+                 loc.x = mouseX;
+                 loc.y = mouseY;
+             }
             rect(loc.x, loc.y, size, size);
         }
         // Interpolating the location, doing it arbitrarily for now
